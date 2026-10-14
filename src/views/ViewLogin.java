@@ -40,9 +40,10 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         textboxusername = new javax.swing.JTextField();
+        checkboxShowPassword = new javax.swing.JCheckBox();
+        textboxPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pawlish");
@@ -70,78 +71,108 @@ public class ViewLogin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(176, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(111, 111, 111)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(263, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(248, 248, 248)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(240, 240, 240))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(283, 283, 283)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(323, Short.MAX_VALUE)))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 680));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208), 2));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(35, 54, 61));
         jLabel3.setText("Welcome Back");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 44, 285, 21));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(91, 111, 117));
         jLabel5.setText("Sign in to manage appoinments");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 77, 201, 21));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(35, 54, 61));
         jLabel6.setText("Username");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 116, 116, 21));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(35, 54, 61));
         jLabel7.setText("Password");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 201, 116, 21));
-
-        jPasswordField1.setBackground(new java.awt.Color(227, 244, 241));
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(91, 111, 117))); // NOI18N
-        jPasswordField1.setMargin(new java.awt.Insets(2, 6, 6, 6));
-        jPanel4.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 228, 266, 31));
 
         jButton1.setBackground(new java.awt.Color(255, 138, 101));
-        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(35, 54, 61));
         jButton1.setText("Login");
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 298, 266, 35));
 
         textboxusername.setBackground(new java.awt.Color(227, 244, 241));
         textboxusername.setMargin(new java.awt.Insets(2, 6, 6, 6));
-        jPanel4.add(textboxusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 143, 266, 31));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 360, 380));
+        checkboxShowPassword.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        checkboxShowPassword.setForeground(new java.awt.Color(35, 54, 61));
+        checkboxShowPassword.setText("Show Password");
+        checkboxShowPassword.addActionListener(this::checkboxShowPasswordActionPerformed);
+
+        textboxPassword.setBackground(new java.awt.Color(227, 244, 241));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(checkboxShowPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                        .addComponent(textboxusername)
+                        .addComponent(textboxPassword)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(textboxusername, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(textboxPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkboxShowPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 360, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,6 +188,21 @@ public class ViewLogin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkboxShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxShowPasswordActionPerformed
+        
+        //if the check box is checked show the password
+        if(checkboxShowPassword.isSelected())
+        {
+            //(char) 0 makes the password visbale
+           textboxPassword.setEchoChar((char) 0);
+        }
+        else //if user unchecks it hide the password
+        {
+            //turns password backto •
+            textboxPassword.setEchoChar('•');
+        }
+    }//GEN-LAST:event_checkboxShowPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +230,7 @@ public class ViewLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkboxShowPassword;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -195,7 +242,7 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField textboxPassword;
     private javax.swing.JTextField textboxusername;
     // End of variables declaration//GEN-END:variables
 }
