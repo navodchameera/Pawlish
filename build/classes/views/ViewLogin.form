@@ -157,7 +157,7 @@
                           <Component id="jLabel7" min="-2" pref="116" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="checkboxShowPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" pref="266" max="32767" attributes="0"/>
+                              <Component id="buttonLogin" pref="266" max="32767" attributes="0"/>
                               <Component id="textboxusername" max="32767" attributes="0"/>
                               <Component id="textboxPassword" alignment="1" max="32767" attributes="0"/>
                           </Group>
@@ -184,7 +184,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="checkboxShowPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="42" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="buttonLogin" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -247,7 +247,7 @@
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="buttonLogin">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="65" green="8a" red="ff" type="rgb"/>
@@ -289,6 +289,9 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f1" green="f4" red="e3" type="rgb"/>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[2, 6, 6, 6]"/>
                 </Property>
               </Properties>
             </Component>

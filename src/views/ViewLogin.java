@@ -1,5 +1,7 @@
 package views;
 
+import java.awt.event.ActionListener;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -20,6 +22,24 @@ public class ViewLogin extends javax.swing.JFrame {
     public ViewLogin() {
         initComponents();
     }
+    
+    public String getUsername() 
+    { 
+        return textboxusername.getText(); 
+    }
+    public String getPassword() 
+    { 
+        return new String(textboxPassword.getPassword()); 
+    }
+    
+    public void addLoginListener(ActionListener l) 
+    { 
+        buttonLogin.addActionListener(l); 
+    }
+    
+    
+    //public void showError(String msg) { lblError.setText(msg); }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,7 +60,7 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonLogin = new javax.swing.JButton();
         textboxusername = new javax.swing.JTextField();
         checkboxShowPassword = new javax.swing.JCheckBox();
         textboxPassword = new javax.swing.JPasswordField();
@@ -117,10 +137,10 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(35, 54, 61));
         jLabel7.setText("Password");
 
-        jButton1.setBackground(new java.awt.Color(255, 138, 101));
-        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(35, 54, 61));
-        jButton1.setText("Login");
+        buttonLogin.setBackground(new java.awt.Color(255, 138, 101));
+        buttonLogin.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        buttonLogin.setForeground(new java.awt.Color(35, 54, 61));
+        buttonLogin.setText("Login");
 
         textboxusername.setBackground(new java.awt.Color(227, 244, 241));
         textboxusername.setMargin(new java.awt.Insets(2, 6, 6, 6));
@@ -131,6 +151,7 @@ public class ViewLogin extends javax.swing.JFrame {
         checkboxShowPassword.addActionListener(this::checkboxShowPasswordActionPerformed);
 
         textboxPassword.setBackground(new java.awt.Color(227, 244, 241));
+        textboxPassword.setMargin(new java.awt.Insets(2, 6, 6, 6));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -145,7 +166,7 @@ public class ViewLogin extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(checkboxShowPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                        .addComponent(buttonLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                         .addComponent(textboxusername)
                         .addComponent(textboxPassword)))
                 .addContainerGap())
@@ -168,7 +189,7 @@ public class ViewLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checkboxShowPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
 
@@ -230,8 +251,8 @@ public class ViewLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonLogin;
     private javax.swing.JCheckBox checkboxShowPassword;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
