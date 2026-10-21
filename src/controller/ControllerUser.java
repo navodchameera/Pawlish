@@ -7,6 +7,7 @@ package controller;
 import views.*;
 import dao.*;
 import model.*;
+import javax.swing.*;
 
 /**
  *
@@ -20,6 +21,7 @@ public class ControllerUser {
      
     public ControllerUser(ViewLogin view) {
         this.view = view;
+        this.userDAO = new UserDAO();
         view.addLoginListener(e -> login());
     }
      
@@ -30,23 +32,32 @@ public class ControllerUser {
             String password = view.getPassword();
 
             // validation
-            Validator.requireNotEmpty(username, "Username");
-            Validator.requireNotEmpty(password, "Password");
+            //Validator.requireNotEmpty(username, "Username");
+            //Validator.requireNotEmpty(password, "Password");
 
             //
-            User user = dao.findByUsername(username.trim());
+            User user = userDAO.findByUsername(username.trim());
             if (user == null || !user.getPassword().equals(password))
-                throw new AuthenticationException("Invalid username or password");
+            {
+                //throw new AuthenticationException("Invalid username or password");
+                JOptionPane.showMessageDialog(null, "Waradine");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Harine");
+            }
+                
 
-            SessionManager.setCurrentUser(user);
+            //SessionManager.setCurrentUser(user);
             view.dispose();
-            new DashboardView().setVisible(true);
+            new ViewMain().setVisible(true);
+            
 
-        } catch (InvalidInputException | AuthenticationException ex) {
-            view.showError(ex.getMessage());
-        } catch (SQLException ex) {
-            view.showError("System error. Please try again later.");
-        }
+        } catch (/*InvalidInputException | AuthenticationException ex*/Exception ex) {
+            //view.showError(ex.getMessage());
+        //} catch (SQLException ex) {
+          //  view.showError("System error. Please try again later.");
+        //}
     }
     }
     

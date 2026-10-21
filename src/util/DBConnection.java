@@ -21,7 +21,17 @@ public class DBConnection {                                    // Singleton
         }
         return instance;
     }
-    public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASS);
+    public Connection getConnection(){
+        try
+        {
+            Connection con = DriverManager.getConnection(URL, USER, PASS);
+            return con;
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+           
+        }
+        return null;
     }
 }

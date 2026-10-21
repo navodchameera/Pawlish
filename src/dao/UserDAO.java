@@ -14,12 +14,18 @@ import java.sql.*;
  */
 public class UserDAO {
     
+    private Connection con;
+    
+    public UserDAO()  
+    {
+        con = DBConnection.getInstance().getConnection();
+    }
     
 public User findByUsername(String username) {
     String sql = "SELECT * FROM `user` WHERE username = ?";
 
     try {
-        Connection con = DBConnection.getInstance().getConnection();
+        
         PreparedStatement ps = con.prepareStatement(sql);
 
         ps.setString(1, username);
@@ -36,6 +42,7 @@ public User findByUsername(String username) {
                 rs.getString("Phone"),
                 rs.getString("Address"),
                 rs.getString("role")
+                
             );
         }
 

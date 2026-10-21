@@ -4,7 +4,8 @@
  */
 package pawlish;
 
-import views.ViewLogin;
+import views.*;
+import controller.*;
 
 /**
  *
@@ -17,8 +18,9 @@ public class Pawlish {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ViewLogin n1 = new ViewLogin();
-        n1.setVisible(true);
+        ViewLogin view = new ViewLogin();
+        ControllerUser controller = new ControllerUser(view);
+        view.setVisible(true);
     }
     
 }
