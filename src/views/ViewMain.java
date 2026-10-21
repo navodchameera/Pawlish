@@ -4,15 +4,9 @@
  */
 package views;
 
-import views.PanelAppointments;
-import views.PanelBilling;
-import views.PanelCustomers;
-import views.PanelDashboard;
-import views.PanelPets;
-import views.PanelReports;
-import views.PanelServices;
-import views.ViewLogin;
-
+import javax.swing.JOptionPane;
+import views.*;
+import util.*;
 /**
  *
  * @author User
@@ -101,35 +95,35 @@ public class ViewMain extends javax.swing.JFrame {
         jLabel1.setText("Pawlish");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 150, 32));
 
-        btnDashboard.setBorderPainted(false);
-        btnDashboard.setFocusPainted(false);
         btnDashboard.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnDashboard.setForeground(new java.awt.Color(23, 120, 122));
+        btnDashboard.setText("Dashboard");
+        btnDashboard.setBorderPainted(false);
+        btnDashboard.setFocusPainted(false);
         btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDashboard.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnDashboard.setText("Dashboard");
         btnDashboard.addActionListener(this::btnDashboardActionPerformed);
         jPanel2.add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 72, 162, 42));
 
         btnCustomers.setBackground(new java.awt.Color(23, 120, 122));
-        btnCustomers.setBorderPainted(false);
-        btnCustomers.setFocusPainted(false);
         btnCustomers.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnCustomers.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomers.setText("Customers");
+        btnCustomers.setBorderPainted(false);
+        btnCustomers.setFocusPainted(false);
         btnCustomers.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCustomers.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnCustomers.setText("Customers");
         btnCustomers.addActionListener(this::btnCustomersActionPerformed);
         jPanel2.add(btnCustomers, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 118, 162, 42));
 
         btnPets.setBackground(new java.awt.Color(23, 120, 122));
-        btnPets.setBorderPainted(false);
-        btnPets.setFocusPainted(false);
         btnPets.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnPets.setForeground(new java.awt.Color(255, 255, 255));
+        btnPets.setText("Pets");
+        btnPets.setBorderPainted(false);
+        btnPets.setFocusPainted(false);
         btnPets.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPets.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnPets.setText("Pets");
         btnPets.addActionListener(this::btnPetsActionPerformed);
         jPanel2.add(btnPets, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 164, 162, 42));
 
@@ -145,24 +139,24 @@ public class ViewMain extends javax.swing.JFrame {
         jPanel2.add(btnAppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 210, 162, 42));
 
         btnServices.setBackground(new java.awt.Color(23, 120, 122));
-        btnServices.setBorderPainted(false);
-        btnServices.setFocusPainted(false);
         btnServices.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnServices.setForeground(new java.awt.Color(255, 255, 255));
+        btnServices.setText("Services");
+        btnServices.setBorderPainted(false);
+        btnServices.setFocusPainted(false);
         btnServices.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnServices.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnServices.setText("Services");
         btnServices.addActionListener(this::btnServicesActionPerformed);
         jPanel2.add(btnServices, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 256, 162, 42));
 
         btnBilling.setBackground(new java.awt.Color(23, 120, 122));
-        btnBilling.setBorderPainted(false);
-        btnBilling.setFocusPainted(false);
         btnBilling.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnBilling.setForeground(new java.awt.Color(255, 255, 255));
+        btnBilling.setText("Billing");
+        btnBilling.setBorderPainted(false);
+        btnBilling.setFocusPainted(false);
         btnBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBilling.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnBilling.setText("Billing");
         btnBilling.addActionListener(this::btnBillingActionPerformed);
         jPanel2.add(btnBilling, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 302, 162, 42));
 
@@ -178,13 +172,13 @@ public class ViewMain extends javax.swing.JFrame {
         jPanel2.add(btnReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 348, 162, 42));
 
         btnLogout.setBackground(new java.awt.Color(23, 120, 122));
-        btnLogout.setBorderPainted(false);
-        btnLogout.setFocusPainted(false);
         btnLogout.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogout.setText("Log out");
+        btnLogout.setBorderPainted(false);
+        btnLogout.setFocusPainted(false);
         btnLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnLogout.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnLogout.setText("Log out");
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
         jPanel2.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 618, 162, 42));
 
@@ -243,6 +237,8 @@ public class ViewMain extends javax.swing.JFrame {
                 javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (choice == javax.swing.JOptionPane.YES_OPTION) {
+            SessionManager.logout();
+            JOptionPane.showMessageDialog(null , SessionManager.getCurrentUser());
             dispose();
             ViewLogin login = new ViewLogin();
             login.setVisible(true);

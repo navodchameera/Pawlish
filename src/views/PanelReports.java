@@ -35,7 +35,6 @@ public class PanelReports extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -91,13 +90,6 @@ public class PanelReports extends javax.swing.JPanel {
         jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton1.setText("Generate");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 36, 120, 32));
-
-        jButton2.setBackground(new java.awt.Color(227, 244, 241));
-        jButton2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(23, 120, 122));
-        jButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton2.setText("Export PDF");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 36, 120, 32));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 70, 854, 90));
 
@@ -158,7 +150,6 @@ public class PanelReports extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

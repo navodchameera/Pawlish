@@ -19,7 +19,7 @@ public class Pawlish {
     public static void main(String[] args) {
         // TODO code application logic here
         ViewLogin view = new ViewLogin();
-        ControllerUser controller = new ControllerUser(view);
+        ControllerLogin controller = new ControllerLogin(view);
         view.setVisible(true);
     }
     

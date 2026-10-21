@@ -8,18 +8,19 @@ import views.*;
 import dao.*;
 import model.*;
 import javax.swing.*;
+import util.*;
 
 /**
  *
  * @author User
  */
 
-public class ControllerUser {
+public class ControllerLogin {
     
     private UserDAO userDAO;
     private ViewLogin view;
      
-    public ControllerUser(ViewLogin view) {
+    public ControllerLogin(ViewLogin view) {
         this.view = view;
         this.userDAO = new UserDAO();
         view.addLoginListener(e -> login());
@@ -40,17 +41,16 @@ public class ControllerUser {
             if (user == null || !user.getPassword().equals(password))
             {
                 //throw new AuthenticationException("Invalid username or password");
-                JOptionPane.showMessageDialog(null, "Waradine");
+                JOptionPane.showMessageDialog(null, "Invalid username or password!", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Harine");
-            }
-                
+                SessionManager.setCurrentUser(user);
+                view.dispose();
+                new ViewMain().setVisible(true);
+                JOptionPane.showMessageDialog(null,"Welcome back, " + user.getFirstName() + "!","Welcome to Pawlish",JOptionPane.INFORMATION_MESSAGE);
 
-            //SessionManager.setCurrentUser(user);
-            view.dispose();
-            new ViewMain().setVisible(true);
+            }
             
 
         } catch (/*InvalidInputException | AuthenticationException ex*/Exception ex) {
