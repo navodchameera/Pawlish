@@ -21,9 +21,7 @@ public class PanelCustomers extends javax.swing.JPanel {
         ControllerCustomer cc = new ControllerCustomer(this);
         
     }
-    
-    
-        // ---------- Listeners (used by ControllerCustomer) ----------
+   
 
     public void addSearchListener(java.awt.event.ActionListener l)
     {
@@ -54,8 +52,6 @@ public class PanelCustomers extends javax.swing.JPanel {
     {
         btnClear.addActionListener(l);
     }
-
-    
 
     public String getSearchText()
     {

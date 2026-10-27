@@ -19,6 +19,20 @@
             <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/controller/ControllerUser.java</file>
             <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelCustomers.java</file>
             <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelServices.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelReports.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/dao/CustomerDAO.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/model/Customer.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/controller/ControllerCustomer.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelDashboard.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/model/Pet.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/dao/PetDAO.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/controller/ControllerPet.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/model/Service.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/dao/ServiceDAO.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/controller/ControllerService.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/controller/ControllerAppointment.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/dao/AppointmentDAO.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/model/Appointment.java</file>
         </group>
     </open-files>
 </project-private>

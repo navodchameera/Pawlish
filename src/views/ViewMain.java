@@ -27,7 +27,7 @@ public class ViewMain extends javax.swing.JFrame {
         panelContent.add(new PanelPets(), "pets");
         panelContent.add(new PanelAppointments(), "appointments");
         panelContent.add(new PanelServices(), "services");
-        panelContent.add(new PanelBilling(), "billing");
+        panelContent.add(new PanelBilling(), "settings");
         panelContent.add(new PanelReports(), "reports");
         panelContent.add(new PanelEmployees(), "employees");
         
@@ -58,11 +58,11 @@ public class ViewMain extends javax.swing.JFrame {
 
         javax.swing.JButton[] buttons = {
             btnDashboard, btnCustomers, btnPets, btnAppointments,
-            btnServices, btnBilling, btnReports, btnEmployees
+            btnServices, btnSettings, btnReports, btnEmployees
         };
         String[] names = {
             "dashboard", "customers", "pets", "appointments",
-            "services", "billing", "reports", "employees"
+            "services", "settings", "reports", "employees"
         };
 
         for (int i = 0; i < buttons.length; i++) {
@@ -96,7 +96,7 @@ public class ViewMain extends javax.swing.JFrame {
         btnPets = new javax.swing.JButton();
         btnAppointments = new javax.swing.JButton();
         btnServices = new javax.swing.JButton();
-        btnBilling = new javax.swing.JButton();
+        btnSettings = new javax.swing.JButton();
         btnReports = new javax.swing.JButton();
         btnEmployees = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
@@ -118,35 +118,35 @@ public class ViewMain extends javax.swing.JFrame {
         jLabel1.setText("Pawlish");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 150, 32));
 
-        btnDashboard.setBorderPainted(false);
-        btnDashboard.setFocusPainted(false);
         btnDashboard.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnDashboard.setForeground(new java.awt.Color(23, 120, 122));
+        btnDashboard.setText("Dashboard");
+        btnDashboard.setBorderPainted(false);
+        btnDashboard.setFocusPainted(false);
         btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDashboard.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnDashboard.setText("Dashboard");
         btnDashboard.addActionListener(this::btnDashboardActionPerformed);
         jPanel2.add(btnDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 72, 162, 42));
 
         btnCustomers.setBackground(new java.awt.Color(23, 120, 122));
-        btnCustomers.setBorderPainted(false);
-        btnCustomers.setFocusPainted(false);
         btnCustomers.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnCustomers.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomers.setText("Customers");
+        btnCustomers.setBorderPainted(false);
+        btnCustomers.setFocusPainted(false);
         btnCustomers.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCustomers.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnCustomers.setText("Customers");
         btnCustomers.addActionListener(this::btnCustomersActionPerformed);
         jPanel2.add(btnCustomers, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 118, 162, 42));
 
         btnPets.setBackground(new java.awt.Color(23, 120, 122));
-        btnPets.setBorderPainted(false);
-        btnPets.setFocusPainted(false);
         btnPets.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnPets.setForeground(new java.awt.Color(255, 255, 255));
+        btnPets.setText("Pets");
+        btnPets.setBorderPainted(false);
+        btnPets.setFocusPainted(false);
         btnPets.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPets.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnPets.setText("Pets");
         btnPets.addActionListener(this::btnPetsActionPerformed);
         jPanel2.add(btnPets, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 164, 162, 42));
 
@@ -162,57 +162,57 @@ public class ViewMain extends javax.swing.JFrame {
         jPanel2.add(btnAppointments, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 210, 162, 42));
 
         btnServices.setBackground(new java.awt.Color(23, 120, 122));
-        btnServices.setBorderPainted(false);
-        btnServices.setFocusPainted(false);
         btnServices.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnServices.setForeground(new java.awt.Color(255, 255, 255));
+        btnServices.setText("Services");
+        btnServices.setBorderPainted(false);
+        btnServices.setFocusPainted(false);
         btnServices.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnServices.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnServices.setText("Services");
         btnServices.addActionListener(this::btnServicesActionPerformed);
         jPanel2.add(btnServices, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 256, 162, 42));
 
-        btnBilling.setBackground(new java.awt.Color(23, 120, 122));
-        btnBilling.setBorderPainted(false);
-        btnBilling.setFocusPainted(false);
-        btnBilling.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnBilling.setForeground(new java.awt.Color(255, 255, 255));
-        btnBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnBilling.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnBilling.setText("Billing");
-        btnBilling.addActionListener(this::btnBillingActionPerformed);
-        jPanel2.add(btnBilling, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 302, 162, 42));
+        btnSettings.setBackground(new java.awt.Color(23, 120, 122));
+        btnSettings.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnSettings.setForeground(new java.awt.Color(255, 255, 255));
+        btnSettings.setText("Settings");
+        btnSettings.setBorderPainted(false);
+        btnSettings.setFocusPainted(false);
+        btnSettings.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSettings.setMargin(new java.awt.Insets(2, 12, 2, 2));
+        btnSettings.addActionListener(this::btnSettingsActionPerformed);
+        jPanel2.add(btnSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 576, 162, 42));
 
         btnReports.setBackground(new java.awt.Color(23, 120, 122));
-        btnReports.setBorderPainted(false);
-        btnReports.setFocusPainted(false);
         btnReports.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnReports.setForeground(new java.awt.Color(255, 255, 255));
+        btnReports.setText("Reports");
+        btnReports.setBorderPainted(false);
+        btnReports.setFocusPainted(false);
         btnReports.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnReports.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnReports.setText("Reports");
         btnReports.addActionListener(this::btnReportsActionPerformed);
         jPanel2.add(btnReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 348, 162, 42));
 
         btnEmployees.setBackground(new java.awt.Color(23, 120, 122));
-        btnEmployees.setBorderPainted(false);
-        btnEmployees.setFocusPainted(false);
         btnEmployees.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEmployees.setForeground(new java.awt.Color(255, 255, 255));
+        btnEmployees.setText("Employees");
+        btnEmployees.setBorderPainted(false);
+        btnEmployees.setFocusPainted(false);
         btnEmployees.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnEmployees.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnEmployees.setText("Employees");
         btnEmployees.addActionListener(this::btnEmployeesActionPerformed);
-        jPanel2.add(btnEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 394, 162, 42));
+        jPanel2.add(btnEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 302, 162, 42));
 
         btnLogout.setBackground(new java.awt.Color(23, 120, 122));
-        btnLogout.setBorderPainted(false);
-        btnLogout.setFocusPainted(false);
         btnLogout.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogout.setText("Log out");
+        btnLogout.setBorderPainted(false);
+        btnLogout.setFocusPainted(false);
         btnLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnLogout.setMargin(new java.awt.Insets(2, 12, 2, 2));
-        btnLogout.setText("Log out");
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
         jPanel2.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 618, 162, 42));
 
@@ -257,9 +257,9 @@ public class ViewMain extends javax.swing.JFrame {
         showPanel("services");
     }//GEN-LAST:event_btnServicesActionPerformed
 
-    private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
+    private void btnSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingsActionPerformed
         showPanel("billing");
-    }//GEN-LAST:event_btnBillingActionPerformed
+    }//GEN-LAST:event_btnSettingsActionPerformed
 
     private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
         showPanel("reports");
@@ -309,14 +309,14 @@ public class ViewMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAppointments;
-    private javax.swing.JButton btnBilling;
     private javax.swing.JButton btnCustomers;
     private javax.swing.JButton btnDashboard;
+    private javax.swing.JButton btnEmployees;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPets;
     private javax.swing.JButton btnReports;
-    private javax.swing.JButton btnEmployees;
     private javax.swing.JButton btnServices;
+    private javax.swing.JButton btnSettings;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

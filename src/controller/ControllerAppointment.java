@@ -298,9 +298,7 @@ public class ControllerAppointment
             }
         }
 
-        view.showAppointment(
-            selectedAppointment, serviceIndex, groomerIndex
-        );
+        view.showAppointment(selectedAppointment, serviceIndex, groomerIndex);
     }
 
     private void addAppointment()
@@ -316,11 +314,7 @@ public class ControllerAppointment
         {
             showAll();
 
-            JOptionPane.showMessageDialog(
-                view, "Appointment added",
-                "Appointment Added",
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            JOptionPane.showMessageDialog(view, "Appointment added","Appointment Added",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -328,9 +322,7 @@ public class ControllerAppointment
     {
         if (selectedAppointment == null)
         {
-            JOptionPane.showMessageDialog(
-                view, "Select an appointment from the table first"
-            );
+            JOptionPane.showMessageDialog(view, "Select an appointment from the table first");
             return;
         }
 
@@ -347,11 +339,7 @@ public class ControllerAppointment
         {
             showAll();
 
-            JOptionPane.showMessageDialog(
-                view, "Appointment updated",
-                "Appointment Updated",
-                JOptionPane.INFORMATION_MESSAGE
-            );
+            JOptionPane.showMessageDialog(view, "Appointment updated","Appointment Updated",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -359,19 +347,11 @@ public class ControllerAppointment
     {
         if (selectedAppointment == null)
         {
-            JOptionPane.showMessageDialog(
-                view, "Select an appointment from the table first"
-            );
+            JOptionPane.showMessageDialog(view, "Select an appointment from the table first");
             return;
         }
 
-        int choice = JOptionPane.showConfirmDialog(
-            view,
-            "Delete selected appointment?",
-            "Confirm Delete",
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.WARNING_MESSAGE
-        );
+        int choice = JOptionPane.showConfirmDialog(view,"Delete selected appointment?","Confirm Delete",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 
         if (choice != JOptionPane.YES_OPTION)
         {
@@ -382,9 +362,7 @@ public class ControllerAppointment
         {
             showAll();
 
-            JOptionPane.showMessageDialog(
-                view, "Appointment deleted"
-            );
+            JOptionPane.showMessageDialog(view, "Appointment deleted");
         }
     }
 
@@ -409,9 +387,7 @@ public class ControllerAppointment
 
             if (selectedPetId == 0)
             {
-                throw new CustomException(
-                    "Please select a pet from the pet table"
-                );
+                throw new CustomException("Please select a pet from the pet table");
             }
 
             if (serviceIndex <= 0 || serviceIndex > services.size())
@@ -457,8 +433,7 @@ public class ControllerAppointment
             //handles 12.30 PM from current combo properties
             timeText = timeText.trim().replace('.', ':');
 
-            DateTimeFormatter format =
-                DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
 
             LocalTime time;
 
@@ -494,9 +469,7 @@ public class ControllerAppointment
             if (checkDate
                     && appointmentDateTime.isBefore(LocalDateTime.now()))
             {
-                throw new CustomException(
-                    "Appointment date and time cannot be in the past"
-                );
+                throw new CustomException("Appointment date and time cannot be in the past");
             }
 
             Appointment a = new Appointment();

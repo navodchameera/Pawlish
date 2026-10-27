@@ -38,8 +38,6 @@ public class PanelAppointments extends javax.swing.JPanel {
     }
 
 
-    // ---------- getting form values ----------
-
     //getting appointment search text
     public String getSearchText()
     {
@@ -82,8 +80,6 @@ public class PanelAppointments extends javax.swing.JPanel {
     }
 
 
-    // ---------- getting tables ----------
-
     public javax.swing.JTable getAppointmentsTable()
     {
         return tblAppointments1;
@@ -93,9 +89,6 @@ public class PanelAppointments extends javax.swing.JPanel {
     {
         return tblPets;
     }
-
-
-    // ---------- setting and clearing text ----------
 
     //showing selected pet name in textbox
     public void setPetName(String name)
@@ -114,8 +107,6 @@ public class PanelAppointments extends javax.swing.JPanel {
     }
 
 
-    // ---------- appointment search listeners ----------
-
     public void addSearchListener(java.awt.event.ActionListener l)
     {
         btnSearchAppointment.addActionListener(l);
@@ -130,7 +121,6 @@ public class PanelAppointments extends javax.swing.JPanel {
     }
 
 
-    // ---------- pet search listeners ----------
 
     public void addPetSearchListener(java.awt.event.ActionListener l)
     {
@@ -146,7 +136,6 @@ public class PanelAppointments extends javax.swing.JPanel {
     }
 
 
-    // ---------- appointment button listeners ----------
 
     public void addAppointmentListener(java.awt.event.ActionListener l)
     {
@@ -168,9 +157,6 @@ public class PanelAppointments extends javax.swing.JPanel {
         btnClear.addActionListener(l);
     }
 
-
-    // ---------- loading combo boxes ----------
-
     //loading services and groomers from database
     public void loadChoices(List<String> services, List<String> groomers)
     {
@@ -191,8 +177,6 @@ public class PanelAppointments extends javax.swing.JPanel {
         }
     }
 
-
-    // ---------- showing selected appointment ----------
 
     public void showAppointment(Appointment a,int serviceIndex,int groomerIndex)
     {

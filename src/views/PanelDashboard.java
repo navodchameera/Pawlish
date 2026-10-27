@@ -29,20 +29,20 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblAppointmentCount = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblWeeklyGroomed = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblRevenue = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblPending = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblSchedule = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         btnNewBooking = new javax.swing.JButton();
@@ -67,10 +67,10 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel2.setText("Today's appointments");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 170, 20));
 
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(23, 120, 122));
-        jLabel3.setText("12");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
+        lblAppointmentCount.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
+        lblAppointmentCount.setForeground(new java.awt.Color(23, 120, 122));
+        lblAppointmentCount.setText("0");
+        jPanel1.add(lblAppointmentCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 70, 201, 90));
 
@@ -83,10 +83,10 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel4.setText("Pets groomed this week");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 170, 20));
 
-        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(23, 120, 122));
-        jLabel5.setText("48");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
+        lblWeeklyGroomed.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
+        lblWeeklyGroomed.setForeground(new java.awt.Color(23, 120, 122));
+        lblWeeklyGroomed.setText("0");
+        jPanel2.add(lblWeeklyGroomed, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 70, 201, 90));
 
@@ -99,10 +99,10 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel6.setText("Revenue today");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 170, 20));
 
-        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(23, 120, 122));
-        jLabel7.setText("Rs. 38,500");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
+        lblRevenue.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
+        lblRevenue.setForeground(new java.awt.Color(23, 120, 122));
+        lblRevenue.setText("0");
+        jPanel3.add(lblRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 70, 201, 90));
 
@@ -115,10 +115,10 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel8.setText("Pending payments");
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 170, 20));
 
-        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(23, 120, 122));
-        jLabel9.setText("5");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
+        lblPending.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
+        lblPending.setForeground(new java.awt.Color(23, 120, 122));
+        lblPending.setText("0");
+        jPanel4.add(lblPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 70, 201, 90));
 
@@ -131,9 +131,8 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel10.setText("Today's schedule");
         jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 300, 24));
 
-        jTable1.setFillsViewportHeight(true);
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSchedule.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"09:00", "Bruno", "Full groom", "Dilini", "Done"},
                 {"10:30", "Misty", "Bath & blow dry", "Kasun", "In progress"},
@@ -152,9 +151,10 @@ public class PanelDashboard extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setRowHeight(26);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        tblSchedule.setFillsViewportHeight(true);
+        tblSchedule.setRowHeight(26);
+        tblSchedule.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(tblSchedule);
 
         jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 52, 544, 416));
 
@@ -221,13 +221,9 @@ public class PanelDashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -235,6 +231,10 @@ public class PanelDashboard extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblAppointmentCount;
+    private javax.swing.JLabel lblPending;
+    private javax.swing.JLabel lblRevenue;
+    private javax.swing.JLabel lblWeeklyGroomed;
+    private javax.swing.JTable tblSchedule;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,6 +21,17 @@ public class PanelPets extends javax.swing.JPanel {
         //when penl loads create the objet of controller and use it to refresh
         ControllerPet cp = new ControllerPet(this);
         
+        //reload owners (and pets) every time this panel is shown,
+        //so customers added in the Customers panel appear in the combo box
+        addComponentListener(new java.awt.event.ComponentAdapter()
+        {
+            @Override
+            public void componentShown(java.awt.event.ComponentEvent evt)
+            {
+                cp.refresh();
+            }
+        });
+        
         
     }
  
@@ -54,7 +65,6 @@ public class PanelPets extends javax.swing.JPanel {
         btnClear.addActionListener(l);
     }
  
-    
  
     public String getSearchText()
     {
