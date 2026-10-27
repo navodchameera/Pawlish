@@ -4,6 +4,12 @@
  */
 package views;
 
+import controller.*;
+import model.Appointment;
+import java.util.List;
+import java.util.Locale;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author User
@@ -13,10 +19,231 @@ public class PanelAppointments extends javax.swing.JPanel {
     /**
      * Creates new form PanelAppointments
      */
-    public PanelAppointments() {
+    private ControllerAppointment controller;
+
+    public PanelAppointments()
+    {
         initComponents();
+        controller = new ControllerAppointment(this);
+
+        //getting latest records when opening panel
+        addComponentListener(new java.awt.event.ComponentAdapter()
+        {
+            @Override
+            public void componentShown(java.awt.event.ComponentEvent evt)
+            {
+                controller.refresh();
+            }
+        });
     }
 
+
+    // ---------- getting form values ----------
+
+    //getting appointment search text
+    public String getSearchText()
+    {
+        return txtSearchAppoinmets.getText();
+    }
+
+    //getting pet search text
+    public String getPetSearchText()
+    {
+        return txtSearchPets.getText();
+    }
+
+    public int getServiceIndex()
+    {
+        return cmbService.getSelectedIndex();
+    }
+
+    public int getGroomerIndex()
+    {
+        return cmbGroomer.getSelectedIndex();
+    }
+
+    public java.util.Date getAppointmentDate()
+            throws java.text.ParseException
+    {
+        //save typed date before getting value
+        spnDate.commitEdit();
+
+        return (java.util.Date) spnDate.getValue();
+    }
+
+    public String getAppointmentTime()
+    {
+        return (String) cmbTime.getSelectedItem();
+    }
+
+    public String getAppointmentStatus()
+    {
+        return (String) cmbStatus.getSelectedItem();
+    }
+
+
+    // ---------- getting tables ----------
+
+    public javax.swing.JTable getAppointmentsTable()
+    {
+        return tblAppointments1;
+    }
+
+    public javax.swing.JTable getPetsTable()
+    {
+        return tblPets;
+    }
+
+
+    // ---------- setting and clearing text ----------
+
+    //showing selected pet name in textbox
+    public void setPetName(String name)
+    {
+        txtPetName.setText(name);
+    }
+
+    public void clearPetSearch()
+    {
+        txtSearchPets.setText("");
+    }
+
+    public void clearAppointmentSearch()
+    {
+        txtSearchAppoinmets.setText("");
+    }
+
+
+    // ---------- appointment search listeners ----------
+
+    public void addSearchListener(java.awt.event.ActionListener l)
+    {
+        btnSearchAppointment.addActionListener(l);
+
+        //also search when pressing enter
+        txtSearchAppoinmets.addActionListener(l);
+    }
+
+    public void addShowAllListener(java.awt.event.ActionListener l)
+    {
+        btnShowAllAppoimnets.addActionListener(l);
+    }
+
+
+    // ---------- pet search listeners ----------
+
+    public void addPetSearchListener(java.awt.event.ActionListener l)
+    {
+        btnSearchPets.addActionListener(l);
+
+        //also search when pressing enter
+        txtSearchPets.addActionListener(l);
+    }
+
+    public void addShowAllPetsListener(java.awt.event.ActionListener l)
+    {
+        btnShowAll.addActionListener(l);
+    }
+
+
+    // ---------- appointment button listeners ----------
+
+    public void addAppointmentListener(java.awt.event.ActionListener l)
+    {
+        jButton3.addActionListener(l);
+    }
+
+    public void addUpdateListener(java.awt.event.ActionListener l)
+    {
+        jButton4.addActionListener(l);
+    }
+
+    public void addDeleteListener(java.awt.event.ActionListener l)
+    {
+        jButton5.addActionListener(l);
+    }
+
+    public void addClearListener(java.awt.event.ActionListener l)
+    {
+        btnClear.addActionListener(l);
+    }
+
+
+    // ---------- loading combo boxes ----------
+
+    //loading services and groomers from database
+    public void loadChoices(List<String> services, List<String> groomers)
+    {
+        cmbService.removeAllItems();
+        cmbGroomer.removeAllItems();
+
+        cmbService.addItem("--Select--");
+        cmbGroomer.addItem("--Select--");
+
+        for (String name : services)
+        {
+            cmbService.addItem(name);
+        }
+
+        for (String name : groomers)
+        {
+            cmbGroomer.addItem(name);
+        }
+    }
+
+
+    // ---------- showing selected appointment ----------
+
+    public void showAppointment(Appointment a,int serviceIndex,int groomerIndex)
+    {
+        txtPetName.setText(a.getPetName());
+
+        cmbService.setSelectedIndex(serviceIndex);
+        cmbGroomer.setSelectedIndex(groomerIndex);
+
+        spnDate.setValue(new java.util.Date(a.getDate().getTime()));
+
+        DateTimeFormatter format =
+            DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
+
+        String time = a.getTime().toLocalTime().format(format);
+
+        boolean found = false;
+
+        for (int i = 0; i < cmbTime.getItemCount(); i++)
+        {
+            //matching time even if properties used a dot
+            String item = cmbTime.getItemAt(i).trim().replace('.', ':');
+
+            if (time.equals(item))
+            {
+                cmbTime.setSelectedIndex(i);
+                found = true;
+                break;
+            }
+        }
+
+        //show saved time if it is not in current options
+        if (!found)
+        {
+            cmbTime.addItem(time);
+            cmbTime.setSelectedItem(time);
+        }
+
+        cmbStatus.setSelectedItem(a.getStatus());
+    }
+    //clearing appointment fields
+    public void clearForm()
+    {
+        txtPetName.setText("");
+        cmbService.setSelectedIndex(0);
+        cmbGroomer.setSelectedIndex(0);
+        spnDate.setValue(new java.util.Date());
+        cmbTime.setSelectedIndex(0);
+        cmbStatus.setSelectedIndex(0);
+        
+    }
+    
     
 
     /**

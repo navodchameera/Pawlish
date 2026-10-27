@@ -30,8 +30,11 @@ public class PetDAO
     {
         //creating an array list to get all pets
         List<Pet> pets = new ArrayList<>();
-        String sql = "SELECT p.*, c.name AS ownerName FROM `pet` p "
-                   + "JOIN `customer` c ON p.owner_id = c.id ORDER BY p.id";
+        String sql = "SELECT p.*, c.name AS ownerName, "
+                + "c.phone AS ownerPhone "
+                + "FROM pet p "
+                + "JOIN customer c ON p.owner_id = c.id "
+                + "ORDER BY p.id";
 
         try 
         {
@@ -50,7 +53,8 @@ public class PetDAO
                     rs.getDate("birthday"),
                     rs.getDouble("weight"),
                     rs.getInt("owner_id"),
-                    rs.getString("ownerName")
+                    rs.getString("ownerName"),
+                    rs.getString("ownerPhone")
                 );
                 //add created pet to the array list
                 pets.add(pet);
@@ -71,10 +75,13 @@ public class PetDAO
 
         try 
         {
-            String sql = "SELECT p.*, c.name AS ownerName FROM `pet` p "
-                       + "JOIN `customer` c ON p.owner_id = c.id "
-                       + "WHERE p.name LIKE ? OR p.species LIKE ? OR p.breed LIKE ? OR c.name LIKE ? "
-                       + "ORDER BY p.id";
+            String sql = "SELECT p.*, c.name AS ownerName, "
+                    + "c.phone AS ownerPhone "
+                    + "FROM pet p "
+                    + "JOIN customer c ON p.owner_id = c.id "
+                    + "WHERE p.name LIKE ? OR p.species LIKE ? "
+                    + "OR p.breed LIKE ? OR c.name LIKE ? "
+                    + "ORDER BY p.id";
             PreparedStatement ps = con.prepareStatement(sql);
             String like = "%" + keyword + "%";
             ps.setString(1, like);
@@ -94,7 +101,8 @@ public class PetDAO
                     rs.getDate("birthday"),
                     rs.getDouble("weight"),
                     rs.getInt("owner_id"),
-                    rs.getString("ownerName")
+                    rs.getString("ownerName"),
+                    rs.getString("ownerPhone")
                 );
                 //add created pet to the array list
                 pets.add(pet);
@@ -205,5 +213,54 @@ public class PetDAO
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
         return false;
+    }
+    
+    public List<Pet> searchForAppointment(String keyword)
+    {
+        List<Pet> pets = new ArrayList<>();
+
+        String sql = "SELECT p.*, c.name AS ownerName, "
+                   + "c.phone AS ownerPhone "
+                   + "FROM pet p "
+                   + "JOIN customer c ON p.owner_id = c.id "
+                   + "WHERE CAST(p.id AS CHAR) LIKE ? "
+                   + "OR p.name LIKE ? OR c.name LIKE ? "
+                   + "ORDER BY p.id";
+
+        try (PreparedStatement ps = con.prepareStatement(sql))
+        {
+            String searchText = "%" + keyword + "%";
+
+            ps.setString(1, searchText);
+            ps.setString(2, searchText);
+            ps.setString(3, searchText);
+
+            try (ResultSet rs = ps.executeQuery())
+            {
+                //reading pets one by one
+                while (rs.next())
+                {
+                    Pet p = new Pet(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("species"),
+                        rs.getString("breed"),
+                        rs.getDate("birthday"),
+                        rs.getDouble("weight"),
+                        rs.getInt("owner_id"),
+                        rs.getString("ownerName"),
+                        rs.getString("ownerPhone")
+                    );
+                    
+                    pets.add(p);
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+
+        return pets;
     }
 }

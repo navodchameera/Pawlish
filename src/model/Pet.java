@@ -21,11 +21,12 @@ public class Pet {
     private int ownerId;
     //filled from the customer table when the pet is loaded used for the table display
     private String ownerName;
+    private String ownerPhone;
 
     public Pet() {
     }
 
-    public Pet(int id, String name, String species, String breed, java.sql.Date birthday, double weight, int ownerId, String ownerName) {
+    public Pet(int id, String name, String species, String breed, java.sql.Date birthday, double weight, int ownerId, String ownerName,String ownerPhone) {
         this.id = id;
         this.name = name;
         this.species = species;
@@ -34,6 +35,7 @@ public class Pet {
         this.weight = weight;
         this.ownerId = ownerId;
         this.ownerName = ownerName;
+        this.ownerPhone = ownerPhone;
     }
 
     public int getId() {
@@ -98,6 +100,16 @@ public class Pet {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+    
+    public String getOwnerPhone()
+    {
+        return ownerPhone;
+    }
+
+    public void setOwnerPhone(String ownerPhone)
+    {
+        this.ownerPhone = ownerPhone;
     }
     
 }
