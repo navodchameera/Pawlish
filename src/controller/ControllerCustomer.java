@@ -5,9 +5,9 @@
 package controller;
 
 import dao.CustomerDAO;
-import model.Customer;
+import model.*;
 import util.CustomException;
-import views.PanelCustomers;
+import views.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
@@ -33,12 +33,13 @@ public class ControllerCustomer
         this.view = view;
         this.customerDAO = new CustomerDAO();
 
-        view.addSearchListener(e -> search());
+        view.addSearchListener(e ->search());
         view.addShowAllListener(e -> showAll());
         view.addCustomerListener(e -> addCustomer());
         view.addUpdateListener(e -> updateCustomer());
-        view.addDeleteListener(e -> deleteCustomer());
+        view.addDeleteListener(e ->deleteCustomer());
         view.addClearListener(e -> clear());
+        view.addSaveAndAddAnialListener(e ->saveAndAdd());
 
         // Fill the form when a row is selected.
         view.getCustomersTable().getSelectionModel().addListSelectionListener(e -> 
@@ -52,7 +53,7 @@ public class ControllerCustomer
         showAll();
     }
 
-    // ---------- Loading the table ----------
+    
 
     private void showAll() 
     {
@@ -131,6 +132,35 @@ public class ControllerCustomer
         {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+    }
+    
+    private void saveAndAdd()
+    {
+        try
+        {
+            Customer c = readForm();
+            //form was invalid, the error was already shown
+            if (c == null) 
+            {
+                return;
+            }
+            
+            //add the customer on the form 
+            addCustomer();
+            PanelPets p1 = new PanelPets();
+            //calling show pets to load the owner
+            
+            Pet emptyPet = new Pet();
+            
+            p1.showPet(emptyPet, c.getId());
+            
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+        
     }
 
     private void updateCustomer() 

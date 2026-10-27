@@ -44,6 +44,7 @@ public class ControllerPet
         view.addUpdateListener(e -> updatePet());
         view.addDeleteListener(e -> deletePet());
         view.addClearListener(e -> clear());
+        
 
         // Fill the form when a row is selected.
         view.getPetsTable().getSelectionModel().addListSelectionListener(e -> 
@@ -58,8 +59,7 @@ public class ControllerPet
         showAll();
     }
 
-    // ---------- Owner combo box ----------
-
+    
     // Loads all customer names into the combo box. Call this again if customers change.
     public void refreshOwners() 
     {
@@ -86,6 +86,7 @@ public class ControllerPet
     private void showAll() 
     {
         fillTable(petDAO.findAll());
+        
     }
 
     private void search() 
@@ -99,6 +100,7 @@ public class ControllerPet
         {
             fillTable(petDAO.search(keyword));
         }
+        refresh();
     }
 
     private void fillTable(List<Pet> pets) 
@@ -121,7 +123,7 @@ public class ControllerPet
         }
     }
 
-    // ---------- Selecting a row ----------
+
 
     private void onRowSelected() 
     {
@@ -238,12 +240,12 @@ public class ControllerPet
     {
         try 
         {
-            String name       = view.getPetName().trim();
-            String species    = view.getSpecies();
-            String breed      = view.getBreed().trim();
+            String name = view.getPetName().trim();
+            String species = view.getSpecies();
+            String breed = view.getBreed().trim();
             java.util.Date birthday = view.getBirthday();
             String weightText = view.getWeight().trim();
-            int ownerIndex    = view.getOwnerIndex();
+            int ownerIndex = view.getOwnerIndex();
 
             if (name.isEmpty() || breed.isEmpty() || weightText.isEmpty()) 
             {

@@ -19,12 +19,10 @@ public class PanelPets extends javax.swing.JPanel {
     public PanelPets() {
         initComponents();
         //when penl loads create the objet of controller and use it to refresh
-        new ControllerPet(this).refresh();
+        ControllerPet cp = new ControllerPet(this);
+        
+        
     }
-    //GEN-LAST:event_btnClearActionPerformed
-    
- 
-    // ---------- Listeners (used by ControllerPet) ----------
  
     public void addSearchListener(java.awt.event.ActionListener l)
     {
@@ -123,6 +121,8 @@ public class PanelPets extends javax.swing.JPanel {
         txtWeight.setText(String.valueOf(p.getWeight()));
         cmbOwner.setSelectedIndex(ownerIndex);
     }
+    
+    public void setOwner(int ownerIndex)
  
     //empties the form and the search box
     public void clearForm()

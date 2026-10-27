@@ -55,7 +55,10 @@ public class PanelCustomers extends javax.swing.JPanel {
         btnClear.addActionListener(l);
     }
 
-    // ---------- Getters ----------
+    public void addSaveAndAddAnialListener(java.awt.event.ActionListener l)
+    {
+        btnAddAnimal.addActionListener(l);
+    }
 
     public String getSearchText()
     {
@@ -282,11 +285,12 @@ public class PanelCustomers extends javax.swing.JPanel {
         btnClear.addActionListener(this::btnClearActionPerformed);
         jPanel2.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 530, 78, 40));
 
-        btnAddAnimal.setBackground(new java.awt.Color(153, 255, 153));
+        btnAddAnimal.setBackground(new java.awt.Color(23, 120, 122));
         btnAddAnimal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnAddAnimal.setForeground(new java.awt.Color(35, 54, 61));
-        btnAddAnimal.setText("Add a Animal");
+        btnAddAnimal.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddAnimal.setText("Save & Add a Animal");
         btnAddAnimal.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddAnimal.addActionListener(this::btnAddAnimalActionPerformed);
         jPanel2.add(btnAddAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 480, 336, 40));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 70, 368, 590));
@@ -295,6 +299,10 @@ public class PanelCustomers extends javax.swing.JPanel {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
 
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnAddAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAnimalActionPerformed
+        
+    }//GEN-LAST:event_btnAddAnimalActionPerformed
 
     /**
      * @param args the command line arguments
