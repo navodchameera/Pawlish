@@ -122,7 +122,7 @@ public class PanelPets extends javax.swing.JPanel {
         cmbOwner.setSelectedIndex(ownerIndex);
     }
     
-    public void setOwner(int ownerIndex)
+    
  
     //empties the form and the search box
     public void clearForm()

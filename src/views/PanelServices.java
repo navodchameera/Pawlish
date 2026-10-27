@@ -4,6 +4,9 @@
  */
 package views;
 
+import controller.*;
+import model.*;
+
 /**
  *
  * @author User
@@ -15,43 +18,89 @@ public class PanelServices extends javax.swing.JPanel {
      */
     public PanelServices() {
         initComponents();
-        tblServices.getTableHeader().setReorderingAllowed(false);
-
-        // Load the selected row into this panel's input fields.
-        tblServices.getSelectionModel().addListSelectionListener(event -> {
-            if (!event.getValueIsAdjusting()) {
-                loadSelectedService();
-            }
-        });
+        
+        //create a controller for services
+        new ControllerService(this);
+        
     }
 
-    private void loadSelectedService() {
-        int selectedRow = tblServices.getSelectedRow();
-        if (selectedRow == -1) {
-            return;
-        }
+    public String getServiceName()
+    {
+        return txtName.getText();
+    }
 
-        int row = tblServices.convertRowIndexToModel(selectedRow);
-        javax.swing.table.TableModel model = tblServices.getModel();
-        txtName.setText(model.getValueAt(row, 1).toString());
-        txtPrice.setText(model.getValueAt(row, 2).toString());
-        txtMinutes.setText(model.getValueAt(row, 3).toString());
+    public String getDescription()
+    {
+        return txtDescription.getText();
+    }
 
-        // Sample details that are not displayed as table columns.
-        // Replace these with your database lookup when the backend is added.
-        String[][] extraDetails = {
-            {"1", "Shampoo, rinse and dry"},
-            {"2", "Bath, haircut and styling"},
-            {"3", "Trim and file"}
-        };
+    public String getPrice()
+    {
+        return txtPrice.getText();
+    }
+
+    public String getDuration()
+    {
+        return txtMinutes.getText();
+    }
+
+    public String getSearchText()
+    {
+        return jTextField1.getText();
+    }
+
+    public javax.swing.JTable getServicesTable()
+    {
+        return tblServices;
+    }
+
+    //adding button listeners from controller
+    public void addSearchListener(java.awt.event.ActionListener l)
+    {
+        jButton1.addActionListener(l);
+    }
+
+    public void addShowAllListener(java.awt.event.ActionListener l)
+    {
+        jButton2.addActionListener(l);
+    }
+
+    public void addServiceListener(java.awt.event.ActionListener l)
+    {
+        jButton3.addActionListener(l);
+    }
+
+    public void addUpdateListener(java.awt.event.ActionListener l)
+    {
+        jButton4.addActionListener(l);
+    }
+
+    public void addDeleteListener(java.awt.event.ActionListener l)
+    {
+        jButton5.addActionListener(l);
+    }
+
+    public void addClearListener(java.awt.event.ActionListener l)
+    {
+        btnClear.addActionListener(l);
+    }
+
+    //showing selected service in the form
+    public void showService(Service s)
+    {
+        txtName.setText(s.getName());
+        txtDescription.setText(s.getDescription());
+        txtPrice.setText(String.valueOf(s.getPrice()));
+        txtMinutes.setText(String.valueOf(s.getDuration()));
+    }
+    
+        //clearing form fields
+    public void clearForm()
+    {
+        txtName.setText("");
         txtDescription.setText("");
-        String selectedId = model.getValueAt(row, 0).toString();
-        for (String[] details : extraDetails) {
-            if (details[0].equals(selectedId)) {
-                txtDescription.setText(details[1]);
-                break;
-            }
-        }
+        txtPrice.setText("");
+        txtMinutes.setText("");
     }
 
     /**
@@ -117,13 +166,10 @@ public class PanelServices extends javax.swing.JPanel {
         jButton2.setText("Show all");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 16, 82, 32));
 
-        tblServices.setFillsViewportHeight(true);
         tblServices.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblServices.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Bath & blow dry", "2500", "45"},
-                {"2", "Full groom", "4500", "90"},
-                {"3", "Nail trim", "800", "15"}
+
             },
             new String [] {
                 "ID", "Service", "Price (Rs.)", "Minutes"
@@ -137,6 +183,7 @@ public class PanelServices extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblServices.setFillsViewportHeight(true);
         tblServices.setRowHeight(26);
         tblServices.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tblServices);
