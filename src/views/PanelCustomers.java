@@ -4,6 +4,8 @@
  */
 package views;
 
+import controller.*;
+
 /**
  *
  * @author User
@@ -15,8 +17,102 @@ public class PanelCustomers extends javax.swing.JPanel {
      */
     public PanelCustomers() {
         initComponents();
+        //sending view to the controller
+        ControllerCustomer cc = new ControllerCustomer(this);
         
     }
+    
+    
+        // ---------- Listeners (used by ControllerCustomer) ----------
+
+    public void addSearchListener(java.awt.event.ActionListener l)
+    {
+        btnSearch.addActionListener(l);
+    }
+
+    public void addShowAllListener(java.awt.event.ActionListener l)
+    {
+        btnShowAll.addActionListener(l);
+    }
+
+    public void addCustomerListener(java.awt.event.ActionListener l)
+    {
+        btnAdd.addActionListener(l);
+    }
+
+    public void addUpdateListener(java.awt.event.ActionListener l)
+    {
+        btnUpdate.addActionListener(l);
+    }
+
+    public void addDeleteListener(java.awt.event.ActionListener l)
+    {
+        btnDelete.addActionListener(l);
+    }
+
+    public void addClearListener(java.awt.event.ActionListener l)
+    {
+        btnClear.addActionListener(l);
+    }
+
+    // ---------- Getters ----------
+
+    public String getSearchText()
+    {
+        return jTextField1.getText();
+    }
+
+    //named getCustomerName because getName() already exists on every Swing component
+    public String getCustomerName()
+    {
+        return txtName.getText();
+    }
+
+    public String getPhone()
+    {
+        return txtPhone.getText();
+    }
+
+    public String getEmail()
+    {
+        return txtEmail.getText();
+    }
+
+    public String getAddress()
+    {
+        return txtAddress.getText();
+    }
+
+    public javax.swing.JTable getCustomersTable()
+    {
+        return tblCustomers;
+    }
+
+    
+
+    //fills the form with the selected customer
+    public void showCustomer(model.Customer c)
+    {
+        txtName.setText(c.getName());
+        txtPhone.setText(c.getPhone());
+        txtEmail.setText(c.getEmail());
+        txtAddress.setText(c.getAddress());
+    }
+
+    //empties the form and the search box
+    public void clearForm()
+    {
+        jTextField1.setText("");
+        txtName.setText("");
+        txtPhone.setText("");
+        txtEmail.setText("");
+        txtAddress.setText("");
+        tblCustomers.clearSelection();
+    }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,8 +126,8 @@ public class PanelCustomers extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnShowAll = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCustomers = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -45,10 +141,11 @@ public class PanelCustomers extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnAddAnimal = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 248, 240));
         setPreferredSize(new java.awt.Dimension(910, 680));
@@ -67,26 +164,24 @@ public class PanelCustomers extends javax.swing.JPanel {
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 262, 32));
 
-        jButton1.setBackground(new java.awt.Color(227, 244, 241));
-        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(23, 120, 122));
-        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton1.setText("Search");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 16, 80, 32));
+        btnSearch.setBackground(new java.awt.Color(227, 244, 241));
+        btnSearch.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(23, 120, 122));
+        btnSearch.setText("Search");
+        btnSearch.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 16, 80, 32));
 
-        jButton2.setBackground(new java.awt.Color(227, 244, 241));
-        jButton2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(23, 120, 122));
-        jButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton2.setText("Show all");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 16, 82, 32));
+        btnShowAll.setBackground(new java.awt.Color(227, 244, 241));
+        btnShowAll.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnShowAll.setForeground(new java.awt.Color(23, 120, 122));
+        btnShowAll.setText("Show all");
+        btnShowAll.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel1.add(btnShowAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 16, 82, 32));
 
         tblCustomers.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblCustomers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Nimal Perera", "0771234567", "nimal@mail.com"},
-                {"2", "Kasuni Silva", "0712345678", "kasuni@mail.com"},
-                {"3", "Amal Fernando", "0755550000", "amal@mail.com"}
+
             },
             new String [] {
                 "ID", "Name", "Phone", "Email"
@@ -158,34 +253,41 @@ public class PanelCustomers extends javax.swing.JPanel {
         txtAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 300, 336, 32));
 
-        jButton3.setBackground(new java.awt.Color(255, 138, 101));
-        jButton3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(35, 54, 61));
-        jButton3.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton3.setText("Add");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 530, 78, 40));
+        btnAdd.setBackground(new java.awt.Color(255, 138, 101));
+        btnAdd.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(35, 54, 61));
+        btnAdd.setText("Add");
+        btnAdd.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel2.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 530, 78, 40));
 
-        jButton4.setBackground(new java.awt.Color(227, 244, 241));
-        jButton4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(23, 120, 122));
-        jButton4.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton4.setText("Update");
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 530, 78, 40));
+        btnUpdate.setBackground(new java.awt.Color(227, 244, 241));
+        btnUpdate.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(23, 120, 122));
+        btnUpdate.setText("Update");
+        btnUpdate.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel2.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 530, 78, 40));
 
-        jButton5.setBackground(new java.awt.Color(255, 227, 216));
-        jButton5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(138, 58, 30));
-        jButton5.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton5.setText("Delete");
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 530, 78, 40));
+        btnDelete.setBackground(new java.awt.Color(255, 227, 216));
+        btnDelete.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(138, 58, 30));
+        btnDelete.setText("Delete");
+        btnDelete.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel2.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 530, 78, 40));
 
         btnClear.setBackground(new java.awt.Color(227, 244, 241));
         btnClear.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnClear.setForeground(new java.awt.Color(23, 120, 122));
-        btnClear.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnClear.setText("Clear");
+        btnClear.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnClear.addActionListener(this::btnClearActionPerformed);
         jPanel2.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 530, 78, 40));
+
+        btnAddAnimal.setBackground(new java.awt.Color(153, 255, 153));
+        btnAddAnimal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddAnimal.setForeground(new java.awt.Color(35, 54, 61));
+        btnAddAnimal.setText("Add a Animal");
+        btnAddAnimal.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel2.add(btnAddAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 480, 336, 40));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 70, 368, 590));
     }// </editor-fold>//GEN-END:initComponents
@@ -200,12 +302,13 @@ public class PanelCustomers extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAddAnimal;
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnShowAll;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
