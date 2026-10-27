@@ -91,21 +91,21 @@ public class ControllerCustomer
         }
     }
 
-    // ---------- Selecting a row ----------
 
     private void onRowSelected() 
     {
         int row = view.getCustomersTable().getSelectedRow();
+        //if its a invalid selection
         if (row < 0 || row >= shownCustomers.size()) 
         {
             selectedCustomer = null;
             return;
         }
+        //getting Customer from the array list
         selectedCustomer = shownCustomers.get(row);
         view.showCustomer(selectedCustomer);
     }
 
-    // ---------- Buttons ----------
 
     private void addCustomer() 
     {

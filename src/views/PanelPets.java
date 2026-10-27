@@ -4,6 +4,9 @@
  */
 package views;
 
+import model.*;
+import controller.*;
+
 /**
  *
  * @author User
@@ -15,6 +18,123 @@ public class PanelPets extends javax.swing.JPanel {
      */
     public PanelPets() {
         initComponents();
+        //when penl loads create the objet of controller and use it to refresh
+        new ControllerPet(this).refresh();
+    }
+    //GEN-LAST:event_btnClearActionPerformed
+    
+ 
+    // ---------- Listeners (used by ControllerPet) ----------
+ 
+    public void addSearchListener(java.awt.event.ActionListener l)
+    {
+        jButton1.addActionListener(l);
+    }
+ 
+    public void addShowAllListener(java.awt.event.ActionListener l)
+    {
+        jButton2.addActionListener(l);
+    }
+ 
+    public void addPetListener(java.awt.event.ActionListener l)
+    {
+        jButton3.addActionListener(l);
+    }
+ 
+    public void addUpdateListener(java.awt.event.ActionListener l)
+    {
+        jButton4.addActionListener(l);
+    }
+ 
+    public void addDeleteListener(java.awt.event.ActionListener l)
+    {
+        jButton5.addActionListener(l);
+    }
+ 
+    public void addClearListener(java.awt.event.ActionListener l)
+    {
+        btnClear.addActionListener(l);
+    }
+ 
+    
+ 
+    public String getSearchText()
+    {
+        return jTextField1.getText();
+    }
+ 
+    //named getPetName because getName() already exists on every Swing component
+    public String getPetName()
+    {
+        return txtName.getText();
+    }
+ 
+    public String getSpecies()
+    {
+        return (String) cmbSpecies.getSelectedItem();
+    }
+ 
+    public String getBreed()
+    {
+        return txtBreed.getText();
+    }
+ 
+    public java.util.Date getBirthday()
+    {
+        return (java.util.Date) spnBirthday.getValue();
+    }
+ 
+    public String getWeight()
+    {
+        return txtWeight.getText();
+    }
+ 
+    //index 0 is "--Select--", so the first real owner is index 1
+    public int getOwnerIndex()
+    {
+        return cmbOwner.getSelectedIndex();
+    }
+ 
+    public javax.swing.JTable getPetsTable()
+    {
+        return tblPets;
+    }
+ 
+ 
+    //fills the owner combo box with the customer names
+    public void loadOwners(java.util.List<String> names)
+    {
+        cmbOwner.removeAllItems();
+        cmbOwner.addItem("--Select--");
+        for (String name : names)
+        {
+            cmbOwner.addItem(name);
+        }
+        cmbOwner.setSelectedIndex(0);
+    }
+ 
+    //fills the form with the selected pet, selecting its owner in the combo box
+    public void showPet(Pet p, int ownerIndex)
+    {
+        txtName.setText(p.getName());
+        cmbSpecies.setSelectedItem(p.getSpecies());
+        txtBreed.setText(p.getBreed());
+        spnBirthday.setValue(p.getBirthday());
+        txtWeight.setText(String.valueOf(p.getWeight()));
+        cmbOwner.setSelectedIndex(ownerIndex);
+    }
+ 
+    //empties the form and the search box
+    public void clearForm()
+    {
+        jTextField1.setText("");
+        txtName.setText("");
+        cmbSpecies.setSelectedIndex(0);
+        txtBreed.setText("");
+        spnBirthday.setValue(new java.util.Date());
+        txtWeight.setText("");
+        cmbOwner.setSelectedIndex(0);
+        tblPets.clearSelection();
     }
 
     
@@ -47,13 +167,13 @@ public class PanelPets extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         txtBreed = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtAge = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtWeight = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        spnBirthday = new javax.swing.JSpinner();
 
         setBackground(new java.awt.Color(255, 248, 240));
         setPreferredSize(new java.awt.Dimension(910, 680));
@@ -86,13 +206,10 @@ public class PanelPets extends javax.swing.JPanel {
         jButton2.setText("Show all");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 16, 82, 32));
 
-        tblPets.setFillsViewportHeight(true);
         tblPets.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblPets.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Bruno", "Dog", "Labrador", "Nimal Perera"},
-                {"2", "Misty", "Cat", "Persian", "Kasuni Silva"},
-                {"3", "Rocky", "Dog", "Beagle", "Amal Fernando"}
+
             },
             new String [] {
                 "ID", "Name", "Species", "Breed", "Owner"
@@ -106,6 +223,7 @@ public class PanelPets extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblPets.setFillsViewportHeight(true);
         tblPets.setRowHeight(26);
         tblPets.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tblPets);
@@ -165,12 +283,8 @@ public class PanelPets extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(35, 54, 61));
-        jLabel8.setText("Age (years)");
+        jLabel8.setText("Birthday(Approximately)");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 204, 160, 20));
-
-        txtAge.setBackground(new java.awt.Color(227, 244, 241));
-        txtAge.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel2.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 226, 160, 32));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(35, 54, 61));
@@ -210,17 +324,16 @@ public class PanelPets extends javax.swing.JPanel {
         btnClear.addActionListener(this::btnClearActionPerformed);
         jPanel2.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 530, 78, 40));
 
+        spnBirthday.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        spnBirthday.setModel(new javax.swing.SpinnerDateModel());
+        spnBirthday.setEditor(new javax.swing.JSpinner.DateEditor(spnBirthday, "dd MMM yyyy"));
+        jPanel2.add(spnBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 226, 160, 32));
+
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 70, 368, 590));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        txtName.setText("");
-        cmbOwner.setSelectedIndex(0);
-        cmbSpecies.setSelectedIndex(0);
-        txtBreed.setText("");
-        txtAge.setText("");
-        txtWeight.setText("");
-        tblPets.clearSelection();
+        clearForm();
     }//GEN-LAST:event_btnClearActionPerformed
 
     /**
@@ -249,8 +362,8 @@ public class PanelPets extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JSpinner spnBirthday;
     private javax.swing.JTable tblPets;
-    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtBreed;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtWeight;

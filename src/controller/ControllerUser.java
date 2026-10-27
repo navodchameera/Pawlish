@@ -158,7 +158,8 @@ public class ControllerUser {
             JOptionPane.showMessageDialog(null, "Employee updated",
                 "Employee Updated", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (CustomException ex) {
+        } 
+        catch (CustomException ex) {
             showError(ex);
         }
     }
