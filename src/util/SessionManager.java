@@ -4,6 +4,8 @@
  */
 package util;
 import model.User;
+import views.*;
+import controller.*;
 
 /**
  *
@@ -14,7 +16,6 @@ public class SessionManager {
     private static User currentUser;
 
     
-
     public static User getCurrentUser() {
         return currentUser;
     }
@@ -41,6 +42,10 @@ public class SessionManager {
     {
         //making current user null
         currentUser = null;
+        
+        ViewLogin login = new ViewLogin();
+        new ControllerLogin(login);
+        login.setVisible(true);
     }
     
 }

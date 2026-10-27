@@ -22,6 +22,7 @@ public class ControllerLogin {
      
     public ControllerLogin(ViewLogin view) {
         this.view = view;
+        //creating a object for userDAO
         this.userDAO = new UserDAO();
         view.addLoginListener(e -> login());
     }
@@ -29,36 +30,38 @@ public class ControllerLogin {
     public void login()
     {
         try {
-            String username = view.getUsername();
-            String password = view.getPassword();
+            String username = view.getUsername().trim();
+            String password = view.getPassword().trim();
 
-            // validation
-            //Validator.requireNotEmpty(username, "Username");
-            //Validator.requireNotEmpty(password, "Password");
-
-            //
-            User user = userDAO.findByUsername(username.trim());
-            if (user == null || !user.getPassword().equals(password))
+            //usermname or password is empty
+            if(username.equals("") || password.equals(""))
             {
-                //throw new AuthenticationException("Invalid username or password");
-                JOptionPane.showMessageDialog(null, "Invalid username or password!", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                throw new CustomException("Login Failed!\nPlease fill in all fields");
             }
+            //username and password is not empty 
             else
             {
-                SessionManager.setCurrentUser(user);
-                view.dispose();
-                new ViewMain().setVisible(true);
-                JOptionPane.showMessageDialog(null,"Welcome back, " + user.getFirstName() + "!","Welcome to Pawlish",JOptionPane.INFORMATION_MESSAGE);
+                User user = userDAO.findByUsername(username.trim());
+                //if there is not a user or password does not match
+                if (user == null || !user.getPassword().equals(password))
+                {
+                    throw new CustomException("Login Failed!\nInvalid username or password");
+                }
+                //if threr is a user and password deos match
+                else
+                {
+                    SessionManager.setCurrentUser(user);
+                    view.dispose();
+                    new ViewMain().setVisible(true);
+                    JOptionPane.showMessageDialog(null,"Welcome back, " + user.getFirstName() + "!","Welcome to Pawlish",JOptionPane.INFORMATION_MESSAGE);
 
+                }
             }
             
-
-        } catch (/*InvalidInputException | AuthenticationException ex*/Exception ex) {
-            //view.showError(ex.getMessage());
-        //} catch (SQLException ex) {
-          //  view.showError("System error. Please try again later.");
-        //}
-    }
+        } 
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }
     
 }

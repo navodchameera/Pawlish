@@ -117,10 +117,13 @@ public class PanelServices extends javax.swing.JPanel {
         jButton2.setText("Show all");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 16, 82, 32));
 
+        tblServices.setFillsViewportHeight(true);
         tblServices.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblServices.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"1", "Bath & blow dry", "2500", "45"},
+                {"2", "Full groom", "4500", "90"},
+                {"3", "Nail trim", "800", "15"}
             },
             new String [] {
                 "ID", "Service", "Price (Rs.)", "Minutes"
@@ -134,7 +137,6 @@ public class PanelServices extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblServices.setFillsViewportHeight(true);
         tblServices.setRowHeight(26);
         tblServices.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tblServices);

@@ -5,6 +5,20 @@
         <group>
             <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/pawlish/Pawlish.java</file>
             <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/ViewLogin.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelBilling.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelEmployees.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelPets.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/ViewMain.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/controller/ControllerLogin.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/util/CustomException.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/util/SessionManager.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/dao/UserDAO.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/model/User.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/util/DBConnection.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelAppointments.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/controller/ControllerUser.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelCustomers.java</file>
+            <file>file:/C:/Users/User/Desktop/EAD/2026.10.03/Pawlish/src/views/PanelServices.java</file>
         </group>
     </open-files>
 </project-private>
