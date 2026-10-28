@@ -35,11 +35,11 @@ public class PanelDashboard extends javax.swing.JPanel {
             }
         });
         
-        
+    }   
         
         public void addRefreshListener(java.awt.event.ActionListener l)
         {
-            btnCreateInvoice.addActionListener(l);
+            btnRefresh.addActionListener(l);
         }
 
         public void addAppointmentsListener(java.awt.event.ActionListener l)
@@ -54,14 +54,12 @@ public class PanelDashboard extends javax.swing.JPanel {
 
 
 
-        public void showCounts(int total, int waiting,int inProgress, int completed)
+        public void showCounts(int total, int groomedToday, double revenue, double pending)
         {
             lblAppointmentCount.setText(String.valueOf(total));
-
-            //existing labels reused for new counts
-            lblWeeklyGroomed.setText(String.valueOf(waiting));
-            lblRevenue.setText(String.valueOf(inProgress));
-            lblPending.setText(String.valueOf(completed));
+            lblWeeklyGroomed.setText(String.valueOf(groomedToday));
+            lblRevenue.setText(String.format("Rs. %,.2f", revenue));
+            lblPending.setText(String.format("Rs. %,.2f", pending));
         }
 
         public javax.swing.JTable getScheduleTable()
@@ -84,20 +82,9 @@ public class PanelDashboard extends javax.swing.JPanel {
 
         
         
-    }
+    
 
-    // ---------- opening another panel ----------
-
-        public void openPage(String page)
-        {
-            ViewMain main =
-                (ViewMain) SwingUtilities.getWindowAncestor(this);
-
-            if (main != null)
-            {
-                main.showPanel(page);
-            }
-        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,11 +112,12 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSchedule = new javax.swing.JTable();
+        btnRefresh = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         btnNewBooking = new javax.swing.JButton();
         btnAddCustomer = new javax.swing.JButton();
-        btnCreateInvoice = new javax.swing.JButton();
+        btnAddCustomer1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 248, 240));
         setPreferredSize(new java.awt.Dimension(910, 680));
@@ -216,10 +204,7 @@ public class PanelDashboard extends javax.swing.JPanel {
         tblSchedule.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"09:00", "Bruno", "Full groom", "Dilini", "Done"},
-                {"10:30", "Misty", "Bath & blow dry", "Kasun", "In progress"},
-                {"12:00", "Rocky", "Nail trim", "Dilini", "Waiting"},
-                {"14:00", "Coco", "De-shedding", "Kasun", "Waiting"}
+
             },
             new String [] {
                 "Time", "Pet", "Service", "Groomer", "Status"
@@ -240,6 +225,14 @@ public class PanelDashboard extends javax.swing.JPanel {
 
         jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 52, 544, 416));
 
+        btnRefresh.setBackground(new java.awt.Color(227, 244, 241));
+        btnRefresh.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(23, 120, 122));
+        btnRefresh.setText("Refresh");
+        btnRefresh.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnRefresh.addActionListener(this::btnRefreshActionPerformed);
+        jPanel5.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 80, 30));
+
         add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 176, 576, 484));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -254,41 +247,46 @@ public class PanelDashboard extends javax.swing.JPanel {
         btnNewBooking.setBackground(new java.awt.Color(255, 138, 101));
         btnNewBooking.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnNewBooking.setForeground(new java.awt.Color(35, 54, 61));
-        btnNewBooking.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnNewBooking.setText("New booking");
+        btnNewBooking.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnNewBooking.addActionListener(this::btnNewBookingActionPerformed);
         jPanel6.add(btnNewBooking, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 56, 230, 42));
 
         btnAddCustomer.setBackground(new java.awt.Color(227, 244, 241));
         btnAddCustomer.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnAddCustomer.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer.setText("Add Pet");
         btnAddCustomer.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        btnAddCustomer.setText("Add customer");
         btnAddCustomer.addActionListener(this::btnAddCustomerActionPerformed);
-        jPanel6.add(btnAddCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
+        jPanel6.add(btnAddCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 164, 230, 42));
 
-        btnCreateInvoice.setBackground(new java.awt.Color(227, 244, 241));
-        btnCreateInvoice.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnCreateInvoice.setForeground(new java.awt.Color(23, 120, 122));
-        btnCreateInvoice.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        btnCreateInvoice.setText("Create invoice");
-        btnCreateInvoice.addActionListener(this::btnCreateInvoiceActionPerformed);
-        jPanel6.add(btnCreateInvoice, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 164, 230, 42));
+        btnAddCustomer1.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer1.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer1.setText("Add customer");
+        btnAddCustomer1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer1.addActionListener(this::btnAddCustomer1ActionPerformed);
+        jPanel6.add(btnAddCustomer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 176, 262, 484));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 176, 262, 230));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBookingActionPerformed
-        
+        ViewMain main = (ViewMain) SwingUtilities.getWindowAncestor(this);
+        main.showPanel("appointments");
     }//GEN-LAST:event_btnNewBookingActionPerformed
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
         
     }//GEN-LAST:event_btnAddCustomerActionPerformed
 
-    private void btnCreateInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateInvoiceActionPerformed
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         
-    }//GEN-LAST:event_btnCreateInvoiceActionPerformed
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnAddCustomer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,8 +295,9 @@ public class PanelDashboard extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCustomer;
-    private javax.swing.JButton btnCreateInvoice;
+    private javax.swing.JButton btnAddCustomer1;
     private javax.swing.JButton btnNewBooking;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

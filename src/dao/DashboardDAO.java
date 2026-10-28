@@ -22,18 +22,24 @@ public class DashboardDAO
         con = DBConnection.getInstance().getConnection();
     }
 
-    public int[] getCounts(Date date) throws SQLException
+    // positions: 0 = today's appointments, 1 = pets groomed today 2 = revenue today 3 = pending payments today
+    public double[] getCounts(Date today) throws SQLException
     {
-        //positions are total, waiting, in progress, completed
-        int[] counts = new int[4];
+        double[] result = new double[4];
 
-        String sql = "SELECT COUNT(*) AS total, "
-                   + "COALESCE(SUM(status = 'Booked'), 0) AS waiting, "
-                   + "COALESCE(SUM(status = 'In progress'), 0) AS inProgress, "
-                   + "COALESCE(SUM(status = 'Done'), 0) AS completed "
-                   + "FROM appointment "
-                   + "WHERE appointment_date = ? "
-                   + "AND status <> 'Cancelled'";
+        //Done = grooming finished AND paid
+        String sql = "SELECT "
+                   + "(SELECT COUNT(*) FROM appointment "
+                   + " WHERE appointment_date = ? AND status <> 'Cancelled') AS total, "
+                   + "(SELECT COUNT(*) FROM appointment "
+                   + " WHERE appointment_date = ? AND status = 'Done') AS groomed, "
+                   + "(SELECT COALESCE(SUM(s.price), 0) FROM appointment a "
+                   + " JOIN service s ON a.service_id = s.id "
+                   + " WHERE a.appointment_date = ? AND a.status = 'Done') AS revenue, "
+                   + "(SELECT COALESCE(SUM(s.price), 0) FROM appointment a "
+                   + " JOIN service s ON a.service_id = s.id "
+                   + " WHERE a.appointment_date = ? "
+                   + " AND a.status IN ('Booked', 'In progress')) AS pending";
 
         if (con == null)
         {
@@ -42,21 +48,24 @@ public class DashboardDAO
 
         try (PreparedStatement ps = con.prepareStatement(sql))
         {
-            ps.setDate(1, date);
+            ps.setDate(1, today);
+            ps.setDate(2, today);
+            ps.setDate(3, today);
+            ps.setDate(4, today);
 
             try (ResultSet rs = ps.executeQuery())
             {
                 if (rs.next())
                 {
-                    counts[0] = rs.getInt("total");
-                    counts[1] = rs.getInt("waiting");
-                    counts[2] = rs.getInt("inProgress");
-                    counts[3] = rs.getInt("completed");
+                    result[0] = rs.getInt("total");
+                    result[1] = rs.getInt("groomed");
+                    result[2] = rs.getDouble("revenue");
+                    result[3] = rs.getDouble("pending");
                 }
             }
         }
 
-        return counts;
+        return result;
     }
 
     public List<Object[]> getTodaySchedule(Date date) throws SQLException

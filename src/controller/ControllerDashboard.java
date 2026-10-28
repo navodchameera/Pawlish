@@ -20,9 +20,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
+
 public class ControllerDashboard
 {
-    private final P view;
+    private final PanelDashboard view;
     private final DashboardDAO dashboardDAO;
 
     public ControllerDashboard(PanelDashboard view)
@@ -31,8 +32,7 @@ public class ControllerDashboard
         this.dashboardDAO = new DashboardDAO();
 
         view.addRefreshListener(e -> refresh());
-        view.addAppointmentsListener(e -> view.openPage("appointments"));
-        view.addCustomerListener(e -> view.openPage("customers"));
+        
 
         //panel calls refresh when it becomes visible
     }
@@ -45,16 +45,10 @@ public class ControllerDashboard
             Date today = Date.valueOf(LocalDate.now());
 
             //getting both results before updating screen
-            int[] counts = dashboardDAO.getCounts(today);
-            List<Object[]> appointments =
-                dashboardDAO.getTodaySchedule(today);
+            double[] counts = dashboardDAO.getCounts(today);
+            List<Object[]> appointments = dashboardDAO.getTodaySchedule(today);
 
-            view.showCounts(
-                counts[0],
-                counts[1],
-                counts[2],
-                counts[3]
-            );
+            view.showCounts((int) counts[0], (int) counts[1], counts[2], counts[3]);
 
             DefaultTableModel model =
                 (DefaultTableModel) view.getScheduleTable().getModel();
