@@ -4,6 +4,10 @@
  */
 package views;
 
+import controller.ControllerReport;
+import java.awt.event.ActionListener;
+import javax.swing.JTable;
+
 /**
  *
  * @author User
@@ -15,6 +19,84 @@ public class PanelReports extends javax.swing.JPanel {
      */
     public PanelReports() {
         initComponents();
+        
+        ControllerReport controller = new ControllerReport(this);
+
+        //loading latest summaries when panel opens
+        addHierarchyListener(e ->
+        {
+            if ((e.getChangeFlags() & java.awt.event.HierarchyEvent.SHOWING_CHANGED) != 0)
+            {
+                if (isShowing())
+                {
+                    controller.refresh();
+                }
+            }
+        });
+    }
+    
+    
+    public void addEmployeeAllListener(ActionListener l)
+    {
+        btnEmployeeAll.addActionListener(l);
+    }
+
+    public void addEmployeeMonthListener(ActionListener l)
+    {
+        btnEmployeeMonth.addActionListener(l);
+    }
+
+    public void addEmployeeWeekListener(ActionListener l)
+    {
+        btnEmployeeWeek.addActionListener(l);
+    }
+
+    public void addEmployeeTodayListener(ActionListener l)
+    {
+        btnEmployeeToday.addActionListener(l);
+    }
+
+    //service table listeners
+    public void addServiceAllListener(ActionListener l)
+    {
+        btnServiceAll.addActionListener(l);
+    }
+
+    public void addServiceMonthListener(ActionListener l)
+    {
+        btnServiceMonth.addActionListener(l);
+    }
+
+    public void addServiceWeekListener(ActionListener l)
+    {
+        btnServiceWeek.addActionListener(l);
+    }
+
+    public void addServiceTodayListener(ActionListener l)
+    {
+        btnServiceToday.addActionListener(l);
+    }
+
+    //getting tables to load data
+    public JTable getEmployeeTable()
+    {
+        return tblEmployee;
+    }
+
+    public JTable getServiceTable()
+    {
+        return tblService;
+    }
+
+    //showing selected period in heading
+    public void setEmployeeTitle(String title)
+    {
+        jLabel5.setText(title);
+    }
+
+    public void setServiceTitle(String title)
+    {
+        jLabel6.setText(title);
     }
 
     /**
@@ -29,9 +111,9 @@ public class PanelReports extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        dateFrom = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        dateTo = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
@@ -70,20 +152,20 @@ public class PanelReports extends javax.swing.JPanel {
         jLabel2.setText("From");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 150, 18));
 
-        jSpinner1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerDateModel());
-        jSpinner1.setEditor(new javax.swing.JSpinner.DateEditor(jSpinner1, "dd MMM yyyy"));
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 150, 32));
+        dateFrom.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dateFrom.setModel(new javax.swing.SpinnerDateModel());
+        dateFrom.setEditor(new javax.swing.JSpinner.DateEditor(dateFrom, "dd MMM yyyy"));
+        jPanel1.add(dateFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 150, 32));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(35, 54, 61));
         jLabel3.setText("To");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 12, 150, 18));
 
-        jSpinner2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jSpinner2.setModel(new javax.swing.SpinnerDateModel());
-        jSpinner2.setEditor(new javax.swing.JSpinner.DateEditor(jSpinner2, "dd MMM yyyy"));
-        jPanel1.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 36, 150, 32));
+        dateTo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dateTo.setModel(new javax.swing.SpinnerDateModel());
+        dateTo.setEditor(new javax.swing.JSpinner.DateEditor(dateTo, "dd MMM yyyy"));
+        jPanel1.add(dateTo, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 36, 150, 32));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(35, 54, 61));
@@ -91,7 +173,7 @@ public class PanelReports extends javax.swing.JPanel {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 12, 150, 18));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Revenue by service", "Appointments by groomer", "Customer visits" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appointment Details", "Cancelled Appointments", "Service Demand by Pet Species" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 36, 220, 32));
 
         jButton1.setBackground(new java.awt.Color(255, 138, 101));
@@ -243,6 +325,8 @@ public class PanelReports extends javax.swing.JPanel {
     private javax.swing.JButton btnServiceMonth;
     private javax.swing.JButton btnServiceToday;
     private javax.swing.JButton btnServiceWeek;
+    private javax.swing.JSpinner dateFrom;
+    private javax.swing.JSpinner dateTo;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -256,8 +340,6 @@ public class PanelReports extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTable tblEmployee;
     private javax.swing.JTable tblService;
     // End of variables declaration//GEN-END:variables

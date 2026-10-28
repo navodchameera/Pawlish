@@ -180,14 +180,14 @@ public class PanelDashboard extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(91, 111, 117));
         jLabel2.setText("Today's appointments");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 170, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 130, 20));
 
         lblAppointmentCount.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
         lblAppointmentCount.setForeground(new java.awt.Color(23, 120, 122));
         lblAppointmentCount.setText("0");
         jPanel1.add(lblAppointmentCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 70, 201, 90));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 70, 160, 90));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
@@ -195,7 +195,7 @@ public class PanelDashboard extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(91, 111, 117));
-        jLabel4.setText("Pets groomed this week");
+        jLabel4.setText("Pets groomed today");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 12, 170, 20));
 
         lblWeeklyGroomed.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
@@ -203,7 +203,7 @@ public class PanelDashboard extends javax.swing.JPanel {
         lblWeeklyGroomed.setText("0");
         jPanel2.add(lblWeeklyGroomed, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 70, 201, 90));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 70, 160, 90));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
@@ -217,9 +217,9 @@ public class PanelDashboard extends javax.swing.JPanel {
         lblRevenue.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
         lblRevenue.setForeground(new java.awt.Color(23, 120, 122));
         lblRevenue.setText("0");
-        jPanel3.add(lblRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
+        jPanel3.add(lblRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 220, 36));
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 70, 201, 90));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 240, 90));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
@@ -233,9 +233,9 @@ public class PanelDashboard extends javax.swing.JPanel {
         lblPending.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 28)); // NOI18N
         lblPending.setForeground(new java.awt.Color(23, 120, 122));
         lblPending.setText("0");
-        jPanel4.add(lblPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 175, 36));
+        jPanel4.add(lblPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 36, 230, 36));
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 70, 201, 90));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 70, 247, 90));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
