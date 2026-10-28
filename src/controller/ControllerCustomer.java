@@ -39,7 +39,6 @@ public class ControllerCustomer
         view.addUpdateListener(e -> updateCustomer());
         view.addDeleteListener(e ->deleteCustomer());
         view.addClearListener(e -> clear());
-        
 
         // Fill the form when a row is selected.
         view.getCustomersTable().getSelectionModel().addListSelectionListener(e -> 

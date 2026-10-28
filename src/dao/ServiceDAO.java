@@ -34,39 +34,59 @@ public class ServiceDAO
     {
         //creating array list to store services
         List<Service> services = new ArrayList<>();
+        PreparedStatement ps = null;
 
-        String sql = "SELECT * FROM service "
-                   + "WHERE name LIKE ? OR description LIKE ? "
-                   + "ORDER BY id";
+        String sql = "SELECT * FROM service WHERE name LIKE ? OR description LIKE ? ORDER BY id";
 
-        try (PreparedStatement ps = con.prepareStatement(sql))
+        if (con == null)
         {
+            JOptionPane.showMessageDialog(null, "Cannot connect to database");
+            return services;
+        }
+
+        try
+        {
+            ps = con.prepareStatement(sql);
             String searchText = "%" + keyword + "%";
 
             ps.setString(1, searchText);
             ps.setString(2, searchText);
 
-            try (ResultSet rs = ps.executeQuery())
-            {
-                //read services one by one
-                while (rs.next())
-                {
-                    Service s = new Service(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("description"),
-                        rs.getDouble("price"),
-                        rs.getInt("duration")
-                    );
+            ResultSet rs = ps.executeQuery();
 
-                    //adding service to the list
-                    services.add(s);
-                }
+            //read services one by one
+            while (rs.next())
+            {
+                Service s = new Service(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("description"),
+                    rs.getDouble("price"),
+                    rs.getInt("duration")
+                );
+
+                //adding service to the list
+                services.add(s);
             }
         }
         catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        finally
+        {
+            //closing statement also closes its result set
+            try
+            {
+                if (ps != null)
+                {
+                    ps.close();
+                }
+            }
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
         }
 
         return services;
@@ -74,12 +94,19 @@ public class ServiceDAO
 
     public boolean insert(Service s)
     {
-        String sql = "INSERT INTO service "
-                   + "(name, description, price, duration) "
-                   + "VALUES (?, ?, ?, ?)";
+        PreparedStatement ps = null;
 
-        try (PreparedStatement ps = con.prepareStatement(sql))
+        String sql = "INSERT INTO service (name, description, price, duration) VALUES (?, ?, ?, ?)";
+
+        if (con == null)
         {
+            JOptionPane.showMessageDialog(null, "Cannot connect to database");
+            return false;
+        }
+
+        try
+        {
+            ps = con.prepareStatement(sql);
             ps.setString(1, s.getName());
             ps.setString(2, s.getDescription());
             ps.setDouble(3, s.getPrice());
@@ -97,17 +124,40 @@ public class ServiceDAO
         {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+        finally
+        {
+            //closing statement after using
+            try
+            {
+                if (ps != null)
+                {
+                    ps.close();
+                }
+            }
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
 
         return false;
     }
 
     public boolean update(Service s)
     {
-        String sql = "UPDATE service SET name = ?, description = ?, "
-                   + "price = ?, duration = ? WHERE id = ?";
+        PreparedStatement ps = null;
 
-        try (PreparedStatement ps = con.prepareStatement(sql))
+        String sql = "UPDATE service SET name = ?, description = ?, price = ?, duration = ? WHERE id = ?";
+
+        if (con == null)
         {
+            JOptionPane.showMessageDialog(null, "Cannot connect to database");
+            return false;
+        }
+
+        try
+        {
+            ps = con.prepareStatement(sql);
             ps.setString(1, s.getName());
             ps.setString(2, s.getDescription());
             ps.setDouble(3, s.getPrice());
@@ -126,16 +176,40 @@ public class ServiceDAO
         {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+        finally
+        {
+            //closing statement after using
+            try
+            {
+                if (ps != null)
+                {
+                    ps.close();
+                }
+            }
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
 
         return false;
     }
 
     public boolean delete(int id)
     {
+        PreparedStatement ps = null;
+
         String sql = "DELETE FROM service WHERE id = ?";
 
-        try (PreparedStatement ps = con.prepareStatement(sql))
+        if (con == null)
         {
+            JOptionPane.showMessageDialog(null, "Cannot connect to database");
+            return false;
+        }
+
+        try
+        {
+            ps = con.prepareStatement(sql);
             ps.setInt(1, id);
 
             int rowsAffected = ps.executeUpdate();
@@ -149,6 +223,21 @@ public class ServiceDAO
         catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        finally
+        {
+            //closing statement after using
+            try
+            {
+                if (ps != null)
+                {
+                    ps.close();
+                }
+            }
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
         }
 
         return false;

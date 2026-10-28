@@ -51,6 +51,17 @@ public class PanelDashboard extends javax.swing.JPanel {
         {
             btnAddCustomer.addActionListener(l);
         }
+        
+        
+        public void addProcessListener(java.awt.event.ActionListener l)
+        {
+            btnProcess.addActionListener(l);
+        }
+
+        public void addDoneListener(java.awt.event.ActionListener l)
+        {
+            btnDone.addActionListener(l);
+        }
 
 
 
@@ -118,6 +129,40 @@ public class PanelDashboard extends javax.swing.JPanel {
         btnNewBooking = new javax.swing.JButton();
         btnAddCustomer = new javax.swing.JButton();
         btnAddCustomer1 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        btnNewBooking1 = new javax.swing.JButton();
+        btnAddCustomer2 = new javax.swing.JButton();
+        btnAddCustomer3 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        btnNewBooking2 = new javax.swing.JButton();
+        btnAddCustomer4 = new javax.swing.JButton();
+        btnAddCustomer5 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        btnNewBooking3 = new javax.swing.JButton();
+        btnAddCustomer6 = new javax.swing.JButton();
+        btnAddCustomer7 = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        btnProcess = new javax.swing.JButton();
+        btnDone = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        btnNewBooking5 = new javax.swing.JButton();
+        btnAddCustomer10 = new javax.swing.JButton();
+        btnAddCustomer11 = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        btnNewBooking6 = new javax.swing.JButton();
+        btnAddCustomer12 = new javax.swing.JButton();
+        btnAddCustomer13 = new javax.swing.JButton();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        btnNewBooking7 = new javax.swing.JButton();
+        btnAddCustomer14 = new javax.swing.JButton();
+        btnAddCustomer15 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 248, 240));
         setPreferredSize(new java.awt.Dimension(910, 680));
@@ -207,11 +252,11 @@ public class PanelDashboard extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Time", "Pet", "Service", "Groomer", "Status"
+                "Time", "Pet", "Owner", "Service", "Groomer", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -268,7 +313,244 @@ public class PanelDashboard extends javax.swing.JPanel {
         btnAddCustomer1.addActionListener(this::btnAddCustomer1ActionPerformed);
         jPanel6.add(btnAddCustomer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 176, 262, 230));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(23, 120, 122));
+        jLabel12.setText("Quick actions");
+        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 230, 24));
+
+        btnNewBooking1.setBackground(new java.awt.Color(255, 138, 101));
+        btnNewBooking1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnNewBooking1.setForeground(new java.awt.Color(35, 54, 61));
+        btnNewBooking1.setText("New booking");
+        btnNewBooking1.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnNewBooking1.addActionListener(this::btnNewBooking1ActionPerformed);
+        jPanel7.add(btnNewBooking1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 56, 230, 42));
+
+        btnAddCustomer2.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer2.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer2.setText("Add Pet");
+        btnAddCustomer2.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer2.addActionListener(this::btnAddCustomer2ActionPerformed);
+        jPanel7.add(btnAddCustomer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 164, 230, 42));
+
+        btnAddCustomer3.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer3.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer3.setText("Add customer");
+        btnAddCustomer3.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer3.addActionListener(this::btnAddCustomer3ActionPerformed);
+        jPanel7.add(btnAddCustomer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
+
+        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 262, 230));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(23, 120, 122));
+        jLabel13.setText("Quick actions");
+        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 230, 24));
+
+        btnNewBooking2.setBackground(new java.awt.Color(255, 138, 101));
+        btnNewBooking2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnNewBooking2.setForeground(new java.awt.Color(35, 54, 61));
+        btnNewBooking2.setText("New booking");
+        btnNewBooking2.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnNewBooking2.addActionListener(this::btnNewBooking2ActionPerformed);
+        jPanel8.add(btnNewBooking2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 56, 230, 42));
+
+        btnAddCustomer4.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer4.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer4.setText("Add Pet");
+        btnAddCustomer4.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer4.addActionListener(this::btnAddCustomer4ActionPerformed);
+        jPanel8.add(btnAddCustomer4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 164, 230, 42));
+
+        btnAddCustomer5.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer5.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer5.setText("Add customer");
+        btnAddCustomer5.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer5.addActionListener(this::btnAddCustomer5ActionPerformed);
+        jPanel8.add(btnAddCustomer5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(23, 120, 122));
+        jLabel14.setText("Quick actions");
+        jPanel9.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 230, 24));
+
+        btnNewBooking3.setBackground(new java.awt.Color(255, 138, 101));
+        btnNewBooking3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnNewBooking3.setForeground(new java.awt.Color(35, 54, 61));
+        btnNewBooking3.setText("New booking");
+        btnNewBooking3.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnNewBooking3.addActionListener(this::btnNewBooking3ActionPerformed);
+        jPanel9.add(btnNewBooking3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 56, 230, 42));
+
+        btnAddCustomer6.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer6.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer6.setText("Add Pet");
+        btnAddCustomer6.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer6.addActionListener(this::btnAddCustomer6ActionPerformed);
+        jPanel9.add(btnAddCustomer6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 164, 230, 42));
+
+        btnAddCustomer7.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer7.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer7.setText("Add customer");
+        btnAddCustomer7.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer7.addActionListener(this::btnAddCustomer7ActionPerformed);
+        jPanel9.add(btnAddCustomer7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
+
+        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 262, 230));
+
+        jPanel6.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 262, 230));
+
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 262, 230));
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(23, 120, 122));
+        jLabel15.setText("Appointment Actions");
+        jPanel10.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 230, 24));
+
+        btnProcess.setBackground(new java.awt.Color(227, 244, 241));
+        btnProcess.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnProcess.setForeground(new java.awt.Color(23, 120, 122));
+        btnProcess.setText("Mark as In progress\n");
+        btnProcess.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnProcess.addActionListener(this::btnProcessActionPerformed);
+        jPanel10.add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 56, 230, 42));
+
+        btnDone.setBackground(new java.awt.Color(227, 244, 241));
+        btnDone.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnDone.setForeground(new java.awt.Color(23, 120, 122));
+        btnDone.setText("Mark as Done");
+        btnDone.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnDone.addActionListener(this::btnDoneActionPerformed);
+        jPanel10.add(btnDone, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(23, 120, 122));
+        jLabel16.setText("Quick actions");
+        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 230, 24));
+
+        btnNewBooking5.setBackground(new java.awt.Color(255, 138, 101));
+        btnNewBooking5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnNewBooking5.setForeground(new java.awt.Color(35, 54, 61));
+        btnNewBooking5.setText("New booking");
+        btnNewBooking5.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnNewBooking5.addActionListener(this::btnNewBooking5ActionPerformed);
+        jPanel11.add(btnNewBooking5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 56, 230, 42));
+
+        btnAddCustomer10.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer10.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer10.setText("Add Pet");
+        btnAddCustomer10.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer10.addActionListener(this::btnAddCustomer10ActionPerformed);
+        jPanel11.add(btnAddCustomer10, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 164, 230, 42));
+
+        btnAddCustomer11.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer11.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer11.setText("Add customer");
+        btnAddCustomer11.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer11.addActionListener(this::btnAddCustomer11ActionPerformed);
+        jPanel11.add(btnAddCustomer11, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
+
+        jPanel10.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 262, 230));
+
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(23, 120, 122));
+        jLabel17.setText("Quick actions");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 230, 24));
+
+        btnNewBooking6.setBackground(new java.awt.Color(255, 138, 101));
+        btnNewBooking6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnNewBooking6.setForeground(new java.awt.Color(35, 54, 61));
+        btnNewBooking6.setText("New booking");
+        btnNewBooking6.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnNewBooking6.addActionListener(this::btnNewBooking6ActionPerformed);
+        jPanel12.add(btnNewBooking6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 56, 230, 42));
+
+        btnAddCustomer12.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer12.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer12.setText("Add Pet");
+        btnAddCustomer12.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer12.addActionListener(this::btnAddCustomer12ActionPerformed);
+        jPanel12.add(btnAddCustomer12, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 164, 230, 42));
+
+        btnAddCustomer13.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer13.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer13.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer13.setText("Add customer");
+        btnAddCustomer13.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer13.addActionListener(this::btnAddCustomer13ActionPerformed);
+        jPanel12.add(btnAddCustomer13, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
+
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(191, 211, 208)));
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(23, 120, 122));
+        jLabel18.setText("Quick actions");
+        jPanel13.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 230, 24));
+
+        btnNewBooking7.setBackground(new java.awt.Color(255, 138, 101));
+        btnNewBooking7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnNewBooking7.setForeground(new java.awt.Color(35, 54, 61));
+        btnNewBooking7.setText("New booking");
+        btnNewBooking7.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnNewBooking7.addActionListener(this::btnNewBooking7ActionPerformed);
+        jPanel13.add(btnNewBooking7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 56, 230, 42));
+
+        btnAddCustomer14.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer14.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer14.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer14.setText("Add Pet");
+        btnAddCustomer14.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer14.addActionListener(this::btnAddCustomer14ActionPerformed);
+        jPanel13.add(btnAddCustomer14, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 164, 230, 42));
+
+        btnAddCustomer15.setBackground(new java.awt.Color(227, 244, 241));
+        btnAddCustomer15.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnAddCustomer15.setForeground(new java.awt.Color(23, 120, 122));
+        btnAddCustomer15.setText("Add customer");
+        btnAddCustomer15.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        btnAddCustomer15.addActionListener(this::btnAddCustomer15ActionPerformed);
+        jPanel13.add(btnAddCustomer15, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 110, 230, 42));
+
+        jPanel12.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 262, 230));
+
+        jPanel10.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 262, 230));
+
+        add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 176, 262, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBookingActionPerformed
@@ -277,7 +559,8 @@ public class PanelDashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNewBookingActionPerformed
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
-        
+        ViewMain main = (ViewMain) SwingUtilities.getWindowAncestor(this);
+        main.showPanel("customer");
     }//GEN-LAST:event_btnAddCustomerActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
@@ -288,6 +571,86 @@ public class PanelDashboard extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddCustomer1ActionPerformed
 
+    private void btnNewBooking1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBooking1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewBooking1ActionPerformed
+
+    private void btnAddCustomer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer2ActionPerformed
+
+    private void btnAddCustomer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer3ActionPerformed
+
+    private void btnNewBooking2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBooking2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewBooking2ActionPerformed
+
+    private void btnAddCustomer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer4ActionPerformed
+
+    private void btnAddCustomer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer5ActionPerformed
+
+    private void btnNewBooking3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBooking3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewBooking3ActionPerformed
+
+    private void btnAddCustomer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer6ActionPerformed
+
+    private void btnAddCustomer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer7ActionPerformed
+
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProcessActionPerformed
+
+    private void btnDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDoneActionPerformed
+
+    private void btnNewBooking5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBooking5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewBooking5ActionPerformed
+
+    private void btnAddCustomer10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer10ActionPerformed
+
+    private void btnAddCustomer11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer11ActionPerformed
+
+    private void btnNewBooking6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBooking6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewBooking6ActionPerformed
+
+    private void btnAddCustomer12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer12ActionPerformed
+
+    private void btnAddCustomer13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer13ActionPerformed
+
+    private void btnNewBooking7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBooking7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewBooking7ActionPerformed
+
+    private void btnAddCustomer14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer14ActionPerformed
+
+    private void btnAddCustomer15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomer15ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -296,21 +659,55 @@ public class PanelDashboard extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCustomer;
     private javax.swing.JButton btnAddCustomer1;
+    private javax.swing.JButton btnAddCustomer10;
+    private javax.swing.JButton btnAddCustomer11;
+    private javax.swing.JButton btnAddCustomer12;
+    private javax.swing.JButton btnAddCustomer13;
+    private javax.swing.JButton btnAddCustomer14;
+    private javax.swing.JButton btnAddCustomer15;
+    private javax.swing.JButton btnAddCustomer2;
+    private javax.swing.JButton btnAddCustomer3;
+    private javax.swing.JButton btnAddCustomer4;
+    private javax.swing.JButton btnAddCustomer5;
+    private javax.swing.JButton btnAddCustomer6;
+    private javax.swing.JButton btnAddCustomer7;
+    private javax.swing.JButton btnDone;
     private javax.swing.JButton btnNewBooking;
+    private javax.swing.JButton btnNewBooking1;
+    private javax.swing.JButton btnNewBooking2;
+    private javax.swing.JButton btnNewBooking3;
+    private javax.swing.JButton btnNewBooking5;
+    private javax.swing.JButton btnNewBooking6;
+    private javax.swing.JButton btnNewBooking7;
+    private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAppointmentCount;
     private javax.swing.JLabel lblPending;

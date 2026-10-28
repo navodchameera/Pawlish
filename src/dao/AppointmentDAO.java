@@ -35,7 +35,9 @@ public class AppointmentDAO
         //creating list to store appointments
         List<Appointment> appointments = new ArrayList<>();
 
-        String sql = "SELECT a.*, p.name AS petName, "
+        try 
+        {
+            String sql = "SELECT a.*, p.name AS petName, "
                    + "s.name AS serviceName "
                    + "FROM appointment a "
                    + "JOIN pet p ON a.pet_id = p.id "
@@ -44,9 +46,9 @@ public class AppointmentDAO
                    + "OR a.status LIKE ? "
                    + "ORDER BY a.appointment_date DESC, "
                    + "a.appointment_time DESC, a.id DESC";
-
-        try (PreparedStatement ps = con.prepareStatement(sql))
-        {
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
             String searchText = "%" + keyword + "%";
 
             ps.setString(1, searchText);
@@ -81,17 +83,20 @@ public class AppointmentDAO
         }
 
         return appointments;
+        
     }
 
     public boolean insert(Appointment a)
     {
-        String sql = "INSERT INTO appointment "
+        
+
+        try 
+        {
+            String sql = "INSERT INTO appointment "
                    + "(pet_id, service_id, groomer_id, "
                    + "appointment_date, appointment_time, status) "
                    + "VALUES (?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement ps = con.prepareStatement(sql))
-        {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, a.getPetId());
             ps.setInt(2, a.getServiceId());
             ps.setInt(3, a.getGroomerId());
@@ -117,13 +122,16 @@ public class AppointmentDAO
 
     public boolean update(Appointment a)
     {
-        String sql = "UPDATE appointment SET pet_id = ?, "
+        
+
+        try 
+        {
+            String sql = "UPDATE appointment SET pet_id = ?, "
                    + "service_id = ?, groomer_id = ?, "
                    + "appointment_date = ?, appointment_time = ?, "
                    + "status = ? WHERE id = ?";
-
-        try (PreparedStatement ps = con.prepareStatement(sql))
-        {
+            
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, a.getPetId());
             ps.setInt(2, a.getServiceId());
             ps.setInt(3, a.getGroomerId());
@@ -150,10 +158,12 @@ public class AppointmentDAO
 
     public boolean delete(int id)
     {
-        String sql = "DELETE FROM appointment WHERE id = ?";
+        
 
-        try (PreparedStatement ps = con.prepareStatement(sql))
+        try 
         {
+            String sql = "DELETE FROM appointment WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
 
             int rowsAffected = ps.executeUpdate();

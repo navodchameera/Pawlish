@@ -5,26 +5,29 @@
 package controller;
 
 import dao.DashboardDAO;
-import views.*;
+import views.PanelDashboard;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author User
  */
-
 public class ControllerDashboard
 {
     private final PanelDashboard view;
     private final DashboardDAO dashboardDAO;
+
+    //keeping appointments in same order as table
+    private List<Object[]> shownAppointments = new ArrayList<>();
 
     public ControllerDashboard(PanelDashboard view)
     {
@@ -32,7 +35,14 @@ public class ControllerDashboard
         this.dashboardDAO = new DashboardDAO();
 
         view.addRefreshListener(e -> refresh());
-        
+        view.addProcessListener(e -> updateStatus("In progress"));
+        view.addDoneListener(e -> updateStatus("Done"));
+
+        //allowing only one appointment to select
+        view.getScheduleTable().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        //making table read only
+        view.getScheduleTable().setDefaultEditor(Object.class, null);
 
         //panel calls refresh when it becomes visible
     }
@@ -50,40 +60,96 @@ public class ControllerDashboard
 
             view.showCounts((int) counts[0], (int) counts[1], counts[2], counts[3]);
 
-            DefaultTableModel model =
-                (DefaultTableModel) view.getScheduleTable().getModel();
+            DefaultTableModel model = (DefaultTableModel) view.getScheduleTable().getModel();
 
+            view.getScheduleTable().clearSelection();
             model.setRowCount(0);
 
-            DateTimeFormatter format =
-                DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
+            shownAppointments = appointments;
 
-            for (Object[] row : appointments)
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
+
+            for (Object[] row : shownAppointments)
             {
                 //converting database time to readable time
                 Time time = (Time) row[0];
+                String timeText = "";
 
                 if (time != null)
                 {
-                    row[0] = time.toLocalTime().format(format);
-                }
-                else
-                {
-                    row[0] = "";
+                    timeText = time.toLocalTime().format(format);
                 }
 
-                model.addRow(row);
+                //id is kept in list but not showing in table
+                model.addRow(new Object[] {timeText, row[1], row[2], row[3], row[4], row[5]});
             }
         }
-        catch (SQLException ex)
+        catch (Exception ex)
         {
-            //show unavailable instead of old or incorrect counts
+            //clearing old data when loading failed
+            shownAppointments = new ArrayList<>();
             view.showLoadError();
 
-            JOptionPane.showMessageDialog(
-                view,
-                "Could not load dashboard: " + ex.getMessage()
-            );
+            JOptionPane.showMessageDialog(view, "Could not load dashboard: " + ex.getMessage());
+        }
+    }
+
+    private void updateStatus(String newStatus)
+    {
+        int selectedRow = view.getScheduleTable().getSelectedRow();
+
+        //checking appointment is selected
+        if (selectedRow == -1)
+        {
+            JOptionPane.showMessageDialog(view, "Please select an appointment first");
+            return;
+        }
+
+        //getting correct row even when table is sorted
+        int rowIndex = view.getScheduleTable().convertRowIndexToModel(selectedRow);
+
+        Object[] appointment = shownAppointments.get(rowIndex);
+
+        int appointmentId = (Integer) appointment[6];
+        String oldStatus = (String) appointment[5];
+        String petName = (String) appointment[1];
+
+        //checking status is already same
+        if (newStatus.equals(oldStatus))
+        {
+            JOptionPane.showMessageDialog(view, "This appointment is already " + newStatus);
+            return;
+        }
+
+        //asking before updating appointment
+        int answer = JOptionPane.showConfirmDialog(view, "Appointment #" + appointmentId + "\nPet: " 
+                + petName + "\n\nChange status from " + oldStatus + " to " + newStatus + 
+                "?", "Confirm status update", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (answer != JOptionPane.YES_OPTION)
+        {
+            return;
+        }
+
+        try
+        {
+            boolean updated = dashboardDAO.updateStatus(appointmentId, oldStatus, newStatus);
+
+            if (updated)
+            {
+                JOptionPane.showMessageDialog(view, "Appointment status updated");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(view, "Appointment was changed or deleted.\nPlease select it again after refreshing.");
+            }
+
+            //loading latest table and counts
+            refresh();
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(view, "Could not update appointment: " + ex.getMessage());
         }
     }
 }

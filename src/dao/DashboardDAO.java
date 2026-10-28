@@ -8,11 +8,14 @@ import util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author User
  */
+
+
 public class DashboardDAO
 {
     private Connection con;
@@ -22,10 +25,12 @@ public class DashboardDAO
         con = DBConnection.getInstance().getConnection();
     }
 
-    // positions: 0 = today's appointments, 1 = pets groomed today 2 = revenue today 3 = pending payments today
-    public double[] getCounts(Date today) throws SQLException
+    //positions: 0 = appointments, 1 = groomed, 2 = revenue, 3 = pending
+    public double[] getCounts(Date today)
     {
         double[] result = new double[4];
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
         //Done = grooming finished AND paid
         String sql = "SELECT "
@@ -43,37 +48,114 @@ public class DashboardDAO
 
         if (con == null)
         {
-            throw new SQLException("Cannot connect to database");
+            JOptionPane.showMessageDialog(null, "Cannot connect to database");
+            return null;
         }
 
-        try (PreparedStatement ps = con.prepareStatement(sql))
+        try
         {
+            ps = con.prepareStatement(sql);
             ps.setDate(1, today);
             ps.setDate(2, today);
             ps.setDate(3, today);
             ps.setDate(4, today);
 
-            try (ResultSet rs = ps.executeQuery())
+            rs = ps.executeQuery();
+
+            if (rs.next())
             {
-                if (rs.next())
+                result[0] = rs.getInt("total");
+                result[1] = rs.getInt("groomed");
+                result[2] = rs.getDouble("revenue");
+                result[3] = rs.getDouble("pending");
+            }
+
+            return result;
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, "Could not load counts: " + ex.getMessage());
+            return null;
+        }
+        finally
+        {
+            //closing statement also closes its result set
+            try
+            {
+                if (ps != null)
                 {
-                    result[0] = rs.getInt("total");
-                    result[1] = rs.getInt("groomed");
-                    result[2] = rs.getDouble("revenue");
-                    result[3] = rs.getDouble("pending");
+                    ps.close();
                 }
             }
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
         }
-
-        return result;
     }
 
-    public List<Object[]> getTodaySchedule(Date date) throws SQLException
+    //updating status of selected appointment
+    public boolean updateStatus(int id, String oldStatus, String newStatus)
+    {
+        PreparedStatement ps = null;
+
+        if (con == null)
+        {
+            JOptionPane.showMessageDialog(null, "Cannot connect to database");
+            return false;
+        }
+
+        //checking old status also before updating
+        String sql = "UPDATE appointment SET status = ? WHERE id = ? AND status = ?";
+
+        try
+        {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, newStatus);
+            ps.setInt(2, id);
+            ps.setString(3, oldStatus);
+
+            int rows = ps.executeUpdate();
+
+            //returns true if one appointment updated
+            if (rows == 1)
+            {
+                return true;
+            }
+
+            JOptionPane.showMessageDialog(null, "Appointment was changed or deleted. Please refresh and select it again.");
+            return false;
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, "Could not update appointment: " + ex.getMessage());
+            return false;
+        }
+        finally
+        {
+            //closing statement after using
+            try
+            {
+                if (ps != null)
+                {
+                    ps.close();
+                }
+            }
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public List<Object[]> getTodaySchedule(Date date)
     {
         //each object array holds one appointment row
         List<Object[]> appointments = new ArrayList<>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
-        String sql = "SELECT a.appointment_time, "
+        String sql = "SELECT a.id, a.appointment_time, "
                    + "p.name AS petName, "
                    + "c.name AS ownerName, "
                    + "s.name AS serviceName, "
@@ -90,31 +172,53 @@ public class DashboardDAO
 
         if (con == null)
         {
-            throw new SQLException("Cannot connect to database");
+            JOptionPane.showMessageDialog(null, "Cannot connect to database");
+            return null;
         }
 
-        try (PreparedStatement ps = con.prepareStatement(sql))
+        try
         {
+            ps = con.prepareStatement(sql);
             ps.setDate(1, date);
 
-            try (ResultSet rs = ps.executeQuery())
+            rs = ps.executeQuery();
+
+            //reading todays appointments one by one
+            while (rs.next())
             {
-                //reading todays appointments one by one
-                while (rs.next())
+                appointments.add(new Object[]
                 {
-                    appointments.add(new Object[]
-                    {
-                        rs.getTime("appointment_time"),
-                        rs.getString("petName"),
-                        rs.getString("ownerName"),
-                        rs.getString("serviceName"),
-                        rs.getString("groomerName"),
-                        rs.getString("status")
-                    });
+                    rs.getTime("appointment_time"),
+                    rs.getString("petName"),
+                    rs.getString("ownerName"),
+                    rs.getString("serviceName"),
+                    rs.getString("groomerName"),
+                    rs.getString("status"),
+                    rs.getInt("id")
+                });
+            }
+
+            return appointments;
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(null, "Could not load appointments: " + ex.getMessage());
+            return null;
+        }
+        finally
+        {
+            //closing statement also closes its result set
+            try
+            {
+                if (ps != null)
+                {
+                    ps.close();
                 }
             }
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
         }
-
-        return appointments;
     }
 }

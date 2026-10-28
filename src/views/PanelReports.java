@@ -35,13 +35,22 @@ public class PanelReports extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEmployee = new javax.swing.JTable();
+        btnEmployeeToday = new javax.swing.JButton();
+        btnEmployeeAll = new javax.swing.JButton();
+        btnEmployeeWeek = new javax.swing.JButton();
+        btnEmployeeMonth = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblService = new javax.swing.JTable();
+        btnServiceToday = new javax.swing.JButton();
+        btnServiceAll = new javax.swing.JButton();
+        btnServiceMonth = new javax.swing.JButton();
+        btnServiceWeek = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 248, 240));
         setPreferredSize(new java.awt.Dimension(910, 680));
@@ -92,13 +101,6 @@ public class PanelReports extends javax.swing.JPanel {
         jButton1.setText("Generate");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 36, 120, 32));
 
-        jButton2.setBackground(new java.awt.Color(227, 244, 241));
-        jButton2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(23, 120, 122));
-        jButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton2.setText("Export PDF");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 36, 120, 32));
-
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 70, 854, 90));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -107,8 +109,60 @@ public class PanelReports extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(23, 120, 122));
-        jLabel5.setText("Revenue by service (Rs.)");
+        jLabel5.setText("Employee Summary");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 430, 24));
+
+        tblEmployee.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Employee Name", "Completed appointments", "Revenue Earned"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblEmployee.setFillsViewportHeight(true);
+        tblEmployee.setRowHeight(26);
+        tblEmployee.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(tblEmployee);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 90, 440, 380));
+
+        btnEmployeeToday.setBackground(new java.awt.Color(227, 244, 241));
+        btnEmployeeToday.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnEmployeeToday.setForeground(new java.awt.Color(23, 120, 122));
+        btnEmployeeToday.setText("Today");
+        btnEmployeeToday.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel2.add(btnEmployeeToday, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 45, 75, 32));
+
+        btnEmployeeAll.setBackground(new java.awt.Color(227, 244, 241));
+        btnEmployeeAll.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnEmployeeAll.setForeground(new java.awt.Color(23, 120, 122));
+        btnEmployeeAll.setText("All");
+        btnEmployeeAll.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel2.add(btnEmployeeAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 45, 75, 32));
+
+        btnEmployeeWeek.setBackground(new java.awt.Color(227, 244, 241));
+        btnEmployeeWeek.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnEmployeeWeek.setForeground(new java.awt.Color(23, 120, 122));
+        btnEmployeeWeek.setText("Week");
+        btnEmployeeWeek.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel2.add(btnEmployeeWeek, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 45, 75, 32));
+
+        btnEmployeeMonth.setBackground(new java.awt.Color(227, 244, 241));
+        btnEmployeeMonth.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnEmployeeMonth.setForeground(new java.awt.Color(23, 120, 122));
+        btnEmployeeMonth.setText("Month");
+        btnEmployeeMonth.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel2.add(btnEmployeeMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 45, 75, 32));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 176, 470, 484));
 
@@ -118,18 +172,13 @@ public class PanelReports extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(23, 120, 122));
-        jLabel6.setText("Summary");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 336, 24));
+        jLabel6.setText("Service Summary");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 240, 24));
 
-        jTable1.setFillsViewportHeight(true);
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblService.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblService.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Full groom", "12", "54000"},
-                {"Bath & blow dry", "15", "37500"},
-                {"De-shedding", "7", "21000"},
-                {"Nail trim", "12", "9600"},
-                {"Ear cleaning", "7", "4900"}
+
             },
             new String [] {
                 "Service", "Count", "Revenue (Rs.)"
@@ -143,11 +192,40 @@ public class PanelReports extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setRowHeight(26);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        tblService.setFillsViewportHeight(true);
+        tblService.setRowHeight(26);
+        tblService.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(tblService);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 52, 336, 416));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 88, 336, 380));
+
+        btnServiceToday.setBackground(new java.awt.Color(227, 244, 241));
+        btnServiceToday.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnServiceToday.setForeground(new java.awt.Color(23, 120, 122));
+        btnServiceToday.setText("Today");
+        btnServiceToday.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel4.add(btnServiceToday, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 45, 75, 32));
+
+        btnServiceAll.setBackground(new java.awt.Color(227, 244, 241));
+        btnServiceAll.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnServiceAll.setForeground(new java.awt.Color(23, 120, 122));
+        btnServiceAll.setText("All");
+        btnServiceAll.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel4.add(btnServiceAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 45, 75, 32));
+
+        btnServiceMonth.setBackground(new java.awt.Color(227, 244, 241));
+        btnServiceMonth.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnServiceMonth.setForeground(new java.awt.Color(23, 120, 122));
+        btnServiceMonth.setText("Month");
+        btnServiceMonth.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel4.add(btnServiceMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 45, 75, 32));
+
+        btnServiceWeek.setBackground(new java.awt.Color(227, 244, 241));
+        btnServiceWeek.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnServiceWeek.setForeground(new java.awt.Color(23, 120, 122));
+        btnServiceWeek.setText("Week");
+        btnServiceWeek.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel4.add(btnServiceWeek, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 45, 75, 32));
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 176, 368, 484));
     }// </editor-fold>//GEN-END:initComponents
@@ -157,8 +235,15 @@ public class PanelReports extends javax.swing.JPanel {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEmployeeAll;
+    private javax.swing.JButton btnEmployeeMonth;
+    private javax.swing.JButton btnEmployeeToday;
+    private javax.swing.JButton btnEmployeeWeek;
+    private javax.swing.JButton btnServiceAll;
+    private javax.swing.JButton btnServiceMonth;
+    private javax.swing.JButton btnServiceToday;
+    private javax.swing.JButton btnServiceWeek;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -170,8 +255,10 @@ public class PanelReports extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblEmployee;
+    private javax.swing.JTable tblService;
     // End of variables declaration//GEN-END:variables
 }

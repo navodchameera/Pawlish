@@ -256,9 +256,7 @@ public class ControllerService
 
             if (description.length() > 500)
             {
-                throw new CustomException(
-                    "Description cannot have more than 500 characters"
-                );
+                throw new CustomException("Description cannot have more than 500 characters");
             }
 
             double price;
@@ -297,16 +295,12 @@ public class ControllerService
             }
             catch (NumberFormatException ex)
             {
-                throw new CustomException(
-                    "Please enter whole minutes for duration"
-                );
+                throw new CustomException("Please enter whole minutes for duration");
             }
 
             if (duration <= 0)
             {
-                throw new CustomException(
-                    "Duration must be more than zero"
-                );
+                throw new CustomException("Duration must be more than zero");
             }
 
             //creating service using form details
