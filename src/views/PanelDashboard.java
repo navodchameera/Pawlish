@@ -560,7 +560,7 @@ public class PanelDashboard extends javax.swing.JPanel {
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
         ViewMain main = (ViewMain) SwingUtilities.getWindowAncestor(this);
-        main.showPanel("customer");
+        main.showPanel("pets");
     }//GEN-LAST:event_btnAddCustomerActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
@@ -569,6 +569,8 @@ public class PanelDashboard extends javax.swing.JPanel {
 
     private void btnAddCustomer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomer1ActionPerformed
         // TODO add your handling code here:
+        ViewMain main = (ViewMain) SwingUtilities.getWindowAncestor(this);
+        main.showPanel("customers");
     }//GEN-LAST:event_btnAddCustomer1ActionPerformed
 
     private void btnNewBooking1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewBooking1ActionPerformed

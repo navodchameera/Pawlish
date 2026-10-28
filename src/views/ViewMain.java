@@ -27,7 +27,7 @@ public class ViewMain extends javax.swing.JFrame {
         panelContent.add(new PanelPets(), "pets");
         panelContent.add(new PanelAppointments(), "appointments");
         panelContent.add(new PanelServices(), "services");
-        panelContent.add(new PanelBilling(), "settings");
+        panelContent.add(new PanelSettings(), "settings");
         panelContent.add(new PanelReports(), "reports");
         panelContent.add(new PanelEmployees(), "employees");
         
@@ -258,7 +258,7 @@ public class ViewMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnServicesActionPerformed
 
     private void btnSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingsActionPerformed
-        showPanel("billing");
+        showPanel("settings");
     }//GEN-LAST:event_btnSettingsActionPerformed
 
     private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
