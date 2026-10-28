@@ -100,7 +100,7 @@ public class ControllerPet
         {
             fillTable(petDAO.search(keyword));
         }
-        refresh();
+      
     }
 
     private void fillTable(List<Pet> pets) 

@@ -4,6 +4,10 @@
  */
 package views;
 
+import controller.*;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
@@ -15,7 +19,85 @@ public class PanelDashboard extends javax.swing.JPanel {
      */
     public PanelDashboard() {
         initComponents();
+        
+        ControllerDashboard controller = new ControllerDashboard(this);
+
+        //getting latest data when dashboard opens
+        addHierarchyListener(e ->
+        {
+            if ((e.getChangeFlags()
+                    & java.awt.event.HierarchyEvent.SHOWING_CHANGED) != 0)
+            {
+                if (isShowing())
+                {
+                    controller.refresh();
+                }
+            }
+        });
+        
+        
+        
+        public void addRefreshListener(java.awt.event.ActionListener l)
+        {
+            btnCreateInvoice.addActionListener(l);
+        }
+
+        public void addAppointmentsListener(java.awt.event.ActionListener l)
+        {
+            btnNewBooking.addActionListener(l);
+        }
+
+        public void addCustomerListener(java.awt.event.ActionListener l)
+        {
+            btnAddCustomer.addActionListener(l);
+        }
+
+
+
+        public void showCounts(int total, int waiting,int inProgress, int completed)
+        {
+            lblAppointmentCount.setText(String.valueOf(total));
+
+            //existing labels reused for new counts
+            lblWeeklyGroomed.setText(String.valueOf(waiting));
+            lblRevenue.setText(String.valueOf(inProgress));
+            lblPending.setText(String.valueOf(completed));
+        }
+
+        public javax.swing.JTable getScheduleTable()
+        {
+            return tblSchedule;
+        }
+
+        public void showLoadError()
+        {
+            lblAppointmentCount.setText("-");
+            lblWeeklyGroomed.setText("-");
+            lblRevenue.setText("-");
+            lblPending.setText("-");
+
+            DefaultTableModel model = (DefaultTableModel) tblSchedule.getModel();
+
+            model.setRowCount(0);
+        }
+
+
+        
+        
     }
+
+    // ---------- opening another panel ----------
+
+        public void openPage(String page)
+        {
+            ViewMain main =
+                (ViewMain) SwingUtilities.getWindowAncestor(this);
+
+            if (main != null)
+            {
+                main.showPanel(page);
+            }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
