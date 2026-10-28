@@ -6,11 +6,20 @@ package controller;
 
 import dao.ReportDAO;
 import views.PanelReports;
-import java.sql.Date;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
+import util.DBConnection;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.*;
+
+
 
 /**
  *
@@ -41,6 +50,8 @@ public class ControllerReport
         view.addServiceMonthListener(e -> loadServices("Month"));
         view.addServiceWeekListener(e -> loadServices("Week"));
         view.addServiceTodayListener(e -> loadServices("Today"));
+        //generating selected jasper report
+        view.addGenerateReportListener(e -> generateReport());
     }
 
     public void refresh()
@@ -141,6 +152,110 @@ public class ControllerReport
             String revenue = String.format(Locale.ENGLISH, "%,.2f", (Double) row[2]);
 
             model.addRow(new Object[] {row[0], row[1], revenue});
+        }
+    }
+    
+    private void generateReport()
+    {
+        //checking dates entered in the form
+        if (!view.readReportDates())
+        {
+            return;
+        }
+
+        Connection con = null;
+
+        try
+        {
+            //converting spinner dates to sql dates without time
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date fromDate = Date.valueOf(format.format(view.getReportFromDate()));
+            Date toDate = Date.valueOf(format.format(view.getReportToDate()));
+
+            if (fromDate.after(toDate))
+            {
+                JOptionPane.showMessageDialog(view, "From date cannot be after To date");
+                return;
+            }
+
+            String selectedReport = view.getSelectedReport();
+            String reportPath;
+
+            //getting file for selected report
+            if ("Appointment Details".equals(selectedReport))
+            {
+                reportPath = "src/reports/AppointmentDetails.jrxml";
+            }
+            else if ("Cancelled Appointments".equals(selectedReport))
+            {
+                reportPath = "src/reports/CancelledAppointments.jrxml";
+            }
+            else if ("Service Demand by Pet Species".equals(selectedReport))
+            {
+                reportPath = "src/reports/ServiceDemand.jrxml";
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(view, "Please select a report");
+                return;
+            }
+
+            //checking report file exists
+            if (!new java.io.File(reportPath).isFile())
+            {
+                JOptionPane.showMessageDialog(view, "Report file not found: " + reportPath);
+                return;
+            }
+
+            //sending selected dates to jasper report
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("fromDate", fromDate);
+            parameters.put("toDate", toDate);
+
+            //getting connection for this report
+            con = DBConnection.getInstance().getConnection();
+
+            if (con == null)
+            {
+                JOptionPane.showMessageDialog(view, "Cannot connect to database");
+                return;
+            }
+
+            //compiling report design
+            JasperReport jr = JasperCompileManager.compileReport(reportPath);
+
+            //loading database data into report
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, con);
+
+            if (jp.getPages().isEmpty())
+            {
+                JOptionPane.showMessageDialog(view, "No records found for selected dates");
+                return;
+            }
+
+            //opening report without closing main application on exit
+            JasperViewer.viewReport(jp, false);
+        }
+        catch (Exception ex)
+        {
+            JOptionPane.showMessageDialog(view, "Could not generate report: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+        finally
+        {
+            //closing connection used for this report
+            try
+            {
+                if (con != null)
+                {
+                    con.close();
+                }
+            }
+            catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            }
         }
     }
 }

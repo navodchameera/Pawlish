@@ -98,6 +98,44 @@ public class PanelReports extends javax.swing.JPanel {
     {
         jLabel6.setText(title);
     }
+    
+    //adding listener for jasper generate button
+    public void addGenerateReportListener(ActionListener l)
+    {
+        btnGenerate.addActionListener(l);
+    }
+
+    //getting selected jasper report
+    public String getSelectedReport()
+    {
+        return (String) jComboBox1.getSelectedItem();
+    }
+
+    //checking typed dates before generating
+    public boolean readReportDates()
+    {
+        try
+        {
+            dateFrom.commitEdit();
+            dateTo.commitEdit();
+            return true;
+        }
+        catch (java.text.ParseException ex)
+        {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter valid From and To dates");
+            return false;
+        }
+    }
+
+    public java.util.Date getReportFromDate()
+    {
+        return (java.util.Date) dateFrom.getValue();
+    }
+
+    public java.util.Date getReportToDate()
+    {
+        return (java.util.Date) dateTo.getValue();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,7 +154,7 @@ public class PanelReports extends javax.swing.JPanel {
         dateTo = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnGenerate = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -176,12 +214,12 @@ public class PanelReports extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appointment Details", "Cancelled Appointments", "Service Demand by Pet Species" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 36, 220, 32));
 
-        jButton1.setBackground(new java.awt.Color(255, 138, 101));
-        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(35, 54, 61));
-        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton1.setText("Generate");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 36, 120, 32));
+        btnGenerate.setBackground(new java.awt.Color(255, 138, 101));
+        btnGenerate.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnGenerate.setForeground(new java.awt.Color(35, 54, 61));
+        btnGenerate.setText("Generate");
+        btnGenerate.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jPanel1.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 36, 247, 32));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 70, 854, 90));
 
@@ -321,13 +359,13 @@ public class PanelReports extends javax.swing.JPanel {
     private javax.swing.JButton btnEmployeeMonth;
     private javax.swing.JButton btnEmployeeToday;
     private javax.swing.JButton btnEmployeeWeek;
+    private javax.swing.JButton btnGenerate;
     private javax.swing.JButton btnServiceAll;
     private javax.swing.JButton btnServiceMonth;
     private javax.swing.JButton btnServiceToday;
     private javax.swing.JButton btnServiceWeek;
     private javax.swing.JSpinner dateFrom;
     private javax.swing.JSpinner dateTo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
